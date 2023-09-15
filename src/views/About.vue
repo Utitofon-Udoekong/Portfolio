@@ -1,5 +1,5 @@
 <template>
-  <section class="absolute inset-0 p-20 overflow-x-hidden">
+  <section class="page overflow-x-hidden">
 
     <div class="max-w-2xl">
       <div class="flex mt-0 lg:mt-6">
@@ -86,7 +86,7 @@
                 href="mailto:utitofonudoekong0@gmail.com" class="mouse-sm"
                 itemprop="email">utitofonudoekong0@gmail.com</a>.
             </p>
-            <ActionButton to="/contact" data-aos="fade-up" class="hidden lg:block">
+            <ActionButton to="/contact" data-aos="fade-up" class="hidden lg:flex justify-around">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                 <path fill="currentColor" fill-rule="evenodd"
                   d="M12 2C6.477 2 2 6.477 2 12a9.97 9.97 0 0 0 .951 4.262l-.93 4.537a1 1 0 0 0 1.18 1.18l4.537-.93c1.294.61 2.74.95 4.262.95c5.523 0 10-4.476 10-10c0-5.522-4.477-10-10-10Z"

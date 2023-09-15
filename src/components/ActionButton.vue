@@ -24,19 +24,23 @@ const props = defineProps({
 .action-button{
   background-color: #1bbe8d;
   border: none;
-  color: white;
   padding: 15px 45px;
-  text-align: center;
   text-decoration: none;
-  font-size: 1rem;
   cursor: pointer;
   width: fit-content;
   max-width: 100%;
   border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0 11px 5px -6px;
-  font-weight: 600;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0 11px 5px -6px;
   display: flex;
+  justify-content: space-around;
+
+  p{
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+  }
 
   &:hover{
     background-color: #1E1F22;

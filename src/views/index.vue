@@ -24,15 +24,13 @@ const headingChars = heading.split('');
                   v-for="(char, index) in headingChars">{{ char }}
             </span>
           </p>
-          <ActionButton to="/portfolio" data-aos="fade-right" class="block lg:hidden mt-4 mb-4">
+          <ActionButton to="/portfolio" data-aos="fade-right" class="flex justify-around lg:hidden mt-4 mb-4">
             Explore <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
           </ActionButton>
           <RouterLink class="back-link mouse-md inline-block lg:hidden mr-5" to="/about">About<svg class="text-lg pl-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></RouterLink>
           <RouterLink class="back-link mouse-md inline-block lg:hidden" to="/contact">Contact<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></RouterLink>
         </div>
-        <div class="">
-          <ScrollHint/>
-        </div>
+        <ScrollHint/>
       </div>
       <BottomBar/>
     </div>

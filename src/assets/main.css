@@ -75,6 +75,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page{
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+}
+@media (min-width: 1024px) {
+  .page {
+      padding: 4.5rem;
+  }
+}
+absolute inset-0 p-10 lg:p-20
+
 h1, h2, h3, h4, h5, h6, p, span, li {
   cursor: crosshair;
   /* font-family: $font-family-sans-serif; */
