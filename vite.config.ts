@@ -6,12 +6,25 @@ import vue from '@vitejs/plugin-vue'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueRouter({
+      routesFolder: 'src/pages',
+      extensions: ['.vue'],
+      dts: 'src/typed-router.d.ts',
+      importMode: 'async',
+    }),
     vue(),
     Components({
+      // allow auto load components under `./src/components/`
+      extensions: ['vue'],
+      // allow auto import and register components used in vue
+      include: [/\.vue$/, /\.vue\?vue/],
+      dts: 'src/components.d.ts',
       resolvers: [
         IconsResolver({
           prefix: false,
@@ -28,14 +41,13 @@ export default defineConfig({
       ],
       imports: [
         'vue',
-        'vue-router',
+        VueRouterAutoImports,
         '@vueuse/core',
         unheadVueComposablesImports,
       ],
-      dts: './auto-imports.d.ts',
+      dts: 'src/auto-imports.d.ts',
       dirs: [
-        // './composables/**',
-        './src/components'
+        'src/composables'
       ],
       injectAtEnd: true,
       vueTemplate: true

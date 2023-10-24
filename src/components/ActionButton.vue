@@ -34,6 +34,7 @@ const props = defineProps({
   box-shadow: rgba(50, 50, 93, 0.25) 0 11px 5px -6px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 
   p{
     font-size: 1rem;

@@ -1,9 +1,8 @@
-export interface Portfolio {
+export interface Project {
     id:        string;
     title:     string;
     slug:      string;
     type:      string;
-    video:     string;
     cover:     string;
     client:    string;
     address:   string;
@@ -11,7 +10,7 @@ export interface Portfolio {
     stack:     Stack[];
     role:      string;
     lead:      string;
-    images:    Images;
+    images:    string[];
 }
 
 export interface Images {

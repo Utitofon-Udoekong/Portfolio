@@ -97,17 +97,6 @@ onMounted(() => {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bar {
-  width: 10vw;
-  height: 105vh;
-  background: #f1f1f1;
-}
 
-.counter {
-  font-family: 'DT Getai Grotesk Display';
-  color: var(--vt-c-black);
-  padding: 0.2em 0.4em;
-  font-size: 5em;
-}
 </style>
 
