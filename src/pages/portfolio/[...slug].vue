@@ -80,7 +80,7 @@ const portfolioData = usePortfolio();
 
 const currentPortfolioItem = computed(() => {
   //@ts-ignore
-  return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"][0])];
+  return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"])];
 });
 
 useHead({

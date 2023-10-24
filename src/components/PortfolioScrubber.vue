@@ -20,7 +20,7 @@ const props = defineProps({
 
 const emit= defineEmits(["updateSelected"]);
 
-const updateSelected = (index) => {
+const updateSelected = (index: any) => {
   emit('updateSelected', index);
 }
 

@@ -6,7 +6,7 @@ export const portfolio: Project[] = [
         "title": "Fortfolio",
         "slug": "fortfolio-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/fortfolio/cover.png",
+        "cover": "@/assets/images/projects/fortfolio/cover.jpg",
         "client": "Fortfolio limited",
         "address": "https://fortfolio.info",
         "completed": 2021,
@@ -31,10 +31,10 @@ export const portfolio: Project[] = [
         "role": "Lead Developer",
         "lead": "An innovative and content-driven website that goes above and beyond traditional financial management tools",
         "images": [
-            "@/assets/images/projects/fortfolio/0.png",
-            "@/assets/images/projects/fortfolio/1.png",
-            "@/assets/images/projects/fortfolio/2.png",
-            "@/assets/images/projects/fortfolio/3.png",
+            "@/assets/images/projects/fortfolio/0.jpg",
+            "@/assets/images/projects/fortfolio/1.jpg",
+            "@/assets/images/projects/fortfolio/2.jpg",
+            "@/assets/images/projects/fortfolio/3.jpg",
         ]
     },
     {

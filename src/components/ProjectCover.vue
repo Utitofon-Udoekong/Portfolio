@@ -13,7 +13,7 @@
       </div>
       <div class="col-auto justify-content-end d-none d-xl-flex">
         <CodeLine v-if="props.isFocused" :number="'//'">
-          <span class="code--white" v-for="(stackItem, stackIndex) in currentPortfolioItem['stack'] " > 
+          <span class="code--white" v-for="stackItem, stackIndex in currentPortfolioItem['stack'] "> 
             {{stackItem.name}} <span class="px-1" v-if="stackIndex < currentPortfolioItem['stack'].length - 1" > | </span>
           </span>
         </CodeLine>
@@ -22,13 +22,9 @@
 
     <!-- Video -->
     <RouterLink :to="'/portfolio/' + currentPortfolioItem['slug']">
-      <div class="project-cover__video-container">
-        <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow"></i>
-        <video ref="video" :style="elementStyle" class="project-cover__video mouse-md" loop="true" muted
-          :autoplay="isFocused ? true : null" playsinline :poster="currentPortfolioItem['cover']">
-          <source :src="currentPortfolioItem['videoWebm']" type="video/webm">
-          <source :src="currentPortfolioItem['videoMP4']" type="video/mp4">
-        </video>
+      <div class="project-cover__video-container" >
+        // <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
+        <img class="project-cover__video mouse-md" :src="currentPortfolioItem['cover']" alt="">
       </div>
     </RouterLink>
 
