@@ -1,59 +1,12 @@
-<template>
-  <article role="article" :class="elementClasses" tabindex="0" :aria-label="currentPortfolioItem['title']"
-    :aria-description="currentPortfolioItem['lead']">
-
-    <!-- Title & Stack -->
-    <div class="title-bar row justify-content-between align-items-end mb-3 flex-nowrap">
-      <div class="col-auto">
-        <h2 class="lead pb-1 pe-3 d-inline-block mb-0 ps-4 ps-0" style="color: #F2F2F2">{{ displayIndex }}.</h2>
-        <div class="d-inline-block">
-          <span class="project-cover__type text-small mb-0 d-block">{{ currentPortfolioItem["type"] }}</span>
-          <h2 class="project-cover__title mb-0">{{ currentPortfolioItem["title"] }}</h2>
-        </div>
-      </div>
-      <div class="col-auto justify-content-end d-none d-xl-flex">
-        <CodeLine v-if="props.isFocused" :number="'//'">
-          <span class="code--white" v-for="stackItem, stackIndex in currentPortfolioItem['stack'] "> 
-            {{stackItem.name}} <span class="px-1" v-if="stackIndex < currentPortfolioItem['stack'].length - 1" > | </span>
-          </span>
-        </CodeLine>
-      </div>
-    </div>
-
-    <!-- Video -->
-    <RouterLink :to="'/portfolio/' + currentPortfolioItem['slug']">
-      <div class="project-cover__video-container" >
-        // <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
-        <img class="project-cover__video mouse-md" :src="currentPortfolioItem['cover']" alt="">
-      </div>
-    </RouterLink>
-
-    <!-- Lead Text (Mobile)  -->
-    <h3 class="project-cover__lead d-block d-lg-none mt-4">
-      {{ currentPortfolioItem['lead'] }}
-    </h3>
-
-  </article>
-</template>
-
 <script setup lang="ts">
+import { filename, type Project } from '@/utils/types';
+interface Props{
+  portfolioItem: Project
+  index: number,
+  isFocused?: boolean
+}
 
-
-const props = defineProps({
-  portfolioItem: {
-    type: Object,
-    required: true
-  },
-  index: {
-    type: Number,
-    required: true
-  },
-  isFocused: {
-    type: Boolean,
-    required: false,
-    default: false
-  }
-});
+const props = defineProps<Props>();
 
 const currentPortfolioItem = toRef(props, 'portfolioItem');
 
@@ -82,16 +35,53 @@ const elementClasses = computed(() => {
   }
 });
 
-const video = ref();
-watch(() => props.isFocused, (isFocused) => {
-  if (isFocused) {
-    video.value.play();
-  } else {
-    video.value.pause();
-  }
-});
-
+const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager: true })
+const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
+  const clientName = key.split('/')?.[5]
+  const fileName = filename(key)
+  return [clientName+fileName,value.default]
+}))
+console.log(images)
 </script>
+
+<template>
+  <article role="article" :class="elementClasses" tabindex="0" :aria-label="currentPortfolioItem.title"
+    :aria-description="currentPortfolioItem.lead">
+
+    <!-- Title & Stack -->
+    <div class="title-bar flex justify-between items-end mb-3 flex-nowrap">
+      <div class="flex items-end">
+        <h2 class="lead pb-1 pe-3 d-inline-block mb-0 lg:ps-4 ps-0" style="color: #F2F2F2">{{ displayIndex }}.</h2>
+        <div class="inline-block">
+          <span class="project-cover__type text-sm mb-0 block">{{ currentPortfolioItem.type }}</span>
+          <h2 class="project-cover__title mb-0">{{ currentPortfolioItem.title }}</h2>
+        </div>
+      </div>
+      <div class="justify-end hidden lg:flex">
+        <CodeLine v-if="props.isFocused" :number="'//'">
+          <span class="code--white" v-for="stackItem, stackIndex in currentPortfolioItem.stack "> 
+            {{stackItem.name}} <span class="px-1" v-if="stackIndex < currentPortfolioItem.stack.length - 1" > | </span>
+          </span>
+        </CodeLine>
+      </div>
+    </div>
+
+    <!-- Cover -->
+    <RouterLink :to="'/portfolio/' + currentPortfolioItem.slug">
+      <div class="project-cover__video-container" >
+        <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
+        <img class="project-cover__video mouse-md" :src="images[currentPortfolioItem.cover]" alt="">
+        <!-- <p>{{ images['zaga/cover'] }}</p> -->
+      </div>
+    </RouterLink>
+
+    <!-- Lead Text (Mobile)  -->
+    <h3 class="project-cover__lead block lg:hidden mt-4">
+      {{ currentPortfolioItem['lead'] }}
+    </h3>
+
+  </article>
+</template>
 
 <style lang="scss" scoped>
 .project-cover {
@@ -154,18 +144,21 @@ watch(() => props.isFocused, (isFocused) => {
   width: calc(100% + 60px);
   height: calc(100% + 60px);
   object-fit: cover;
-  object-position: center center;
-  transform-origin: center center;
+  object-position: center top;
+  transform-origin: center bottom;
 }
 
 .project-cover--focused {
   transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
   transform: scale(1);
-
+  
   .project-cover__type,
   .project-cover__lead {
     opacity: 1;
     transition-delay: 0.2s;
+  }
+  .project-cover__video{
+    animation: 10s linear 1s infinite alternate backdrop-scroll;
   }
 
   .tech-stack {
@@ -203,6 +196,14 @@ watch(() => props.isFocused, (isFocused) => {
 
   @media screen and (max-width: 992px) {
     opacity: 1;
+  }
+}
+@keyframes backdrop-scroll {
+  from{
+    object-position: center top;
+  }
+  to{
+    object-position: center bottom;
   }
 }
 </style>

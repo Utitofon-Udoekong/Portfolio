@@ -1,60 +1,4 @@
-<template>
-  <section class="page">
 
-    <NavMenu/>
-
-    <div class="container-xxxl pt-4 pt-lg-6">
-      <div class="row justify-content-between">
-        <div class="col-auto d-flex flex-row align-items-center">
-
-          <!-- Back to Home -->
-          <RouterLink class="back-link mouse-md" to="/"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Home
-          </RouterLink>
-
-          <PortfolioScrubber class="ms-6 d-none d-xxl-flex" :portfolioData="portfolioData" :selected="selected"
-                             @updateSelected="updateSelected"/>
-
-        </div>
-        <div class="col-auto position-relative">
-          <!-- Pagination Controls -->
-          <div class="pagination pe-5 pe-xl-6 d-none d-lg-flex" v-if="portfolioData">
-            <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
-               @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
-            <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
-               @click.prevent="paginateNext" :class="{'disabled': selected === portfolioData.length - 1}"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="portfolio-feed-container" class="container-fluid mt-5 mt-lg-6 px-0" style="overflow: hidden;">
-      <div id="portfolio-feed" class="feed-section" role="feed" aria-busy="false" aria-label="Case Studies"
-           v-if="portfolioData">
-
-        <div class="feed-section__container-padding"/>
-
-        <ProjectCover :aria-posinset="index" :aria-setsize="portfolioData.length" :portfolioItem="portfolioItem"
-                      :index="index"
-                      v-for="(portfolioItem, index) in portfolioData" :isFocused="index === selected"/>
-
-        <div class="feed-section__extraElement"/>
-
-        <div class="feed-section__container-padding"/>
-
-
-      </div>
-    </div>
-
-
-    <div id="bottom-bar" class="container-xxxl">
-      <BottomBar/>
-    </div>
-
-    <PortfolioScrubber class="portfolio-links--mobile d-flex d-lg-none" :portfolioData="portfolioData"
-                       :selected="selected" @updateSelected="updateSelected"/>
-
-  </section>
-</template>
 
 <script setup lang="ts">
 
@@ -234,6 +178,66 @@ function setupDraggable() {
 
 </script>
 
+<template>
+  <section class="page">
+
+    <NavMenu/>
+
+    <div class="container-xxxl pt-4 lg:pt-6">
+      <div class="flex justify-between">
+        <div class="col-auto flex flex-row items-center">
+
+          <!-- Back to Home -->
+          <RouterLink class="back-link mouse-md" to="/"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Home
+          </RouterLink>
+
+          <div class="hidden lg:block ms-6">
+            <PortfolioScrubber class="flex" :portfolioData="portfolioData" :selected="selected"
+                             @updateSelected="updateSelected"/>
+          </div>
+
+        </div>
+        <div class="col-auto relative">
+          <!-- Pagination Controls -->
+          <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="portfolioData">
+            <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
+               @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
+            <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
+               @click.prevent="paginateNext" :class="{'disabled': selected === portfolioData.length - 1}"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-feed-container" class="mt-5 lg:mt-6 px-0" style="overflow: hidden;">
+      <div id="portfolio-feed" class="feed-section" role="feed" aria-busy="false" aria-label="Case Studies"
+           v-if="portfolioData">
+
+        <div class="feed-section__container-padding"/>
+
+        <ProjectCover :aria-posinset="index" :aria-setsize="portfolioData.length" :portfolioItem="portfolioItem"
+                      :index="index"
+                      v-for="(portfolioItem, index) in portfolioData" :isFocused="index === selected"/>
+
+        <div class="feed-section__extraElement"/>
+
+        <div class="feed-section__container-padding"/>
+      </div>
+    </div>
+
+
+    <div id="bottom-bar" class="container-xxxl">
+      <BottomBar/>
+    </div>
+
+    <div class="block lg:hidden">
+      <PortfolioScrubber class="portfolio-links--mobile flex" :portfolioData="portfolioData"
+                       :selected="selected" @updateSelected="updateSelected"/>
+    </div>
+
+  </section>
+</template>
+
 <style lang="scss" scoped>
 
 *{
@@ -258,12 +262,13 @@ h1 {
   width: fit-content;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 }
+
 
 .page-enter-from {
   opacity: 0;

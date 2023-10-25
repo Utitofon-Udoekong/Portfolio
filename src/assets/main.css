@@ -85,6 +85,26 @@ body {
       padding: 4.5rem;
   }
 }
+#bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.feed-section__container-padding {
+  width: calc(((100vw - 1600px) / 2) + (1rem * 0.5));
+  height: 10px;
+  display: block;
+  flex: none;
+
+  @media screen and (max-width: 1680px) {
+    width: 30px;
+  }
+
+}
+.container-xxxl{
+  max-width: 1680px;
+}
 
 h1, h2, h3, h4, h5, h6, p, span, li {
   cursor: crosshair;

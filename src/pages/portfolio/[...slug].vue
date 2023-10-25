@@ -5,44 +5,45 @@
 
     <div class="container-xxxl">
 
-      <div class="row mt-5">
+      <div class="grid mt-5">
         <div class="col-auto">
           <Logo :size="50" />
         </div>
       </div>
 
       <!-- Hero-->
-      <div class="row gx-6 mt-5 mt-lg-6">
-        <div class="col-12 col-lg-4">
-          <CodeTag class="mb-2 mb-lg-3">{{ currentPortfolioItem['type'] }}</CodeTag>
-          <h1 class="mb-3 mb-lg-10 project__name"> {{ currentPortfolioItem['title'] }} </h1>
-          <RouterLink class="back-link mouse-md mb-5 mb-lg-0" to="/portfolio"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Back to Explore Projects</RouterLink>
+      <div class="grid grid-cols-2 gap-x-6 mt-5 lg:mt-6">
+        <div class="col-span-4">
+          <CodeTag class="mb-2 mb-lg-3">{{ currentPortfolioItem.type }}</CodeTag>
+          <h1 class="mb-3 lg:mb-10 project__name"> {{ currentPortfolioItem.title }} </h1>
+          <RouterLink class="back-link mouse-md mb-5 lg:mb-0" to="/portfolio"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Back to Explore Projects</RouterLink>
         </div>
-        <!-- <div class="col">
-          <video class="mouse-md" loop="true" muted autoplay playsinline :poster="currentPortfolioItem['cover']" data-aos="zoom-in-down">
+        <div class="col-auto">
+          <img :src="images[currentPortfolioItem.cover]" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="">
+          <!-- <video class="mouse-md" loop="true" muted autoplay playsinline :poster="currentPortfolioItem['cover']" data-aos="zoom-in-down">
             <source :src="currentPortfolioItem['videoWebm']" type="video/webm">
             <source :src="currentPortfolioItem['videoMP4']" type="video/mp4">
-          </video>
-        </div> -->
+          </video> -->
+        </div>
       </div>
 
-      <div class="row mt-5 mt-lg-8 mt-xl-7 gx-6 gx-xl-8 pb-3">
-        <div class="col-12 col-lg-4 order-2 order-lg-1 pt-6 pt-lg-0">
-          <aside class="ps-0 ps-lg-6 mb-5 mb-lg-0" style="position: sticky; top: 60px">
+      <div class="grid lg:grid-cols-2 mt-5 lg:mt-8 xl:mt-7 gap-x-6 xl:gap-x-8 pb-3">
+        <div class="col-span-12 lg:col-span-4 order-2 lg:order-1 pt-6 lg:pt-0">
+          <aside class="ps-0 lg:ps-6 mb-5 lg:mb-0" style="position: sticky; top: 60px">
             <h3 class="mb-5" data-aos="fade-up">Details</h3>
-            <dl class="mb-5 d-block" data-aos="fade-up">
+            <dl class="mb-5 block" data-aos="fade-up">
 
-              <dt v-if="currentPortfolioItem['client']">Client</dt>
-              <dd v-if="currentPortfolioItem['client']"> {{ currentPortfolioItem['client']}} </dd>
+              <dt v-if="currentPortfolioItem.client">Client</dt>
+              <dd v-if="currentPortfolioItem.client"> {{ currentPortfolioItem.client}} </dd>
 
               <!-- <dt class="mt-4" v-if="currentPortfolioItem['partner']">Partner</dt>
               <dd v-if="currentPortfolioItem['partner']"> {{ currentPortfolioItem['partner']}} </dd> -->
 
-              <dt class="mt-4" v-if="currentPortfolioItem['role']">Role</dt>
-              <dd v-if="currentPortfolioItem['role']"> {{ currentPortfolioItem['role']}} </dd>
+              <dt class="mt-4" v-if="currentPortfolioItem.role">Role</dt>
+              <dd v-if="currentPortfolioItem.role"> {{ currentPortfolioItem.role}} </dd>
 
-              <dt class="mt-4" v-if="currentPortfolioItem['completed']">Completed</dt>
-              <dd v-if="currentPortfolioItem['completed']"> {{ currentPortfolioItem['completed']}} </dd>
+              <dt class="mt-4" v-if="currentPortfolioItem.completed">Completed</dt>
+              <dd v-if="currentPortfolioItem.completed"> {{ currentPortfolioItem.completed}} </dd>
 
               <!-- <dt class="mt-4" v-if="currentPortfolioItem['awards']">Recognition</dt>
               <dd v-if="currentPortfolioItem['awards']" v-html="currentPortfolioItem['awards'].replace(/\n/g, '<br />')"></dd> -->
@@ -54,17 +55,17 @@
             </ActionButton>
           </aside>
         </div>
-        <main class="col-12 col-lg-8 order-1 order-lg-2">
-          <div class="col-12 col-lg-11 col-xl-10">
-            <CodeLine :number="'//'" class="mb-5 mb-lg-4">
+        <main class="col-span-12 lg:col-span-8 order-1 lg:order-2">
+          <div class="col-span-12 lg:col-span-11 xl:col-span-10">
+            <CodeLine :number="'//'" class="mb-5 lg:mb-4">
               <span class="code--yellow">npm</span>
               <span class="code--green">&nbsp;run</span>
               <span class="code--white">&nbsp;case_study</span>
             </CodeLine>
-            <h1 class="mb-4 mb-lg-5" data-aos="fade-up">{{ currentPortfolioItem['lead'] }}</h1>
+            <h1 class="mb-4 lg:mb-5" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
           </div>
           <!-- <NotionContent :blocks="currentPortfolioItem['pageContent']"/> -->
-          <p class="mt-7 mt-xxl-8 mt-xxxl-9 text-small text-end copyright d-none d-lg-block">Copyright © {{new Date().getFullYear()}} Marchant Web, LLC. All rights reserved.</p>
+          <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Marchant Web, LLC. All rights reserved.</p>
         </main>
       </div>
 
@@ -74,6 +75,8 @@
 </template>
 
 <script setup lang="ts">
+import { filename } from '@/utils/types';
+
 
 const route = useRoute();
 const portfolioData = usePortfolio();
@@ -82,6 +85,13 @@ const currentPortfolioItem = computed(() => {
   //@ts-ignore
   return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"])];
 });
+
+const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager: true })
+const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
+  const clientName = key.split('/')?.[5]
+  const fileName = filename(key)
+  return [clientName+fileName,value.default]
+}))
 
 useHead({
   title: 'Case Study: ' + currentPortfolioItem.value['title'] + ', ' + currentPortfolioItem.value['type'] + ' | ' + 'Marchant Web',
@@ -114,7 +124,7 @@ h1.project__name {
   color: #F2F2F2;
 }
 
-video {
+.project__cover-image {
   width: 100%;
   aspect-ratio: 2;
   object-fit: cover;
