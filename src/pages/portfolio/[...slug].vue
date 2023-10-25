@@ -5,20 +5,20 @@
 
     <div class="container-xxxl">
 
-      <div class="grid mt-5">
+      <div class="flex flex-wrap mt-5">
         <div class="col-auto">
           <Logo :size="50" />
         </div>
       </div>
 
       <!-- Hero-->
-      <div class="grid grid-cols-2 gap-x-6 mt-5 lg:mt-6">
-        <div class="col-span-4">
-          <CodeTag class="mb-2 mb-lg-3">{{ currentPortfolioItem.type }}</CodeTag>
+      <div class="flex flex-wrap mt-5 lg:mt-6">
+        <div class="w-full lg:w-1/3">
+          <CodeTag class="mb-2 lg:mb-3">{{ currentPortfolioItem.type }}</CodeTag>
           <h1 class="mb-3 lg:mb-10 project__name"> {{ currentPortfolioItem.title }} </h1>
           <RouterLink class="back-link mouse-md mb-5 lg:mb-0" to="/portfolio"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Back to Explore Projects</RouterLink>
         </div>
-        <div class="col-auto">
+        <div class="relative flex-grow max-w-full flex-1">
           <img :src="images[currentPortfolioItem.cover]" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="">
           <!-- <video class="mouse-md" loop="true" muted autoplay playsinline :poster="currentPortfolioItem['cover']" data-aos="zoom-in-down">
             <source :src="currentPortfolioItem['videoWebm']" type="video/webm">
@@ -27,8 +27,8 @@
         </div>
       </div>
 
-      <div class="grid lg:grid-cols-2 mt-5 lg:mt-8 xl:mt-7 gap-x-6 xl:gap-x-8 pb-3">
-        <div class="col-span-12 lg:col-span-4 order-2 lg:order-1 pt-6 lg:pt-0">
+      <div class="flex flex-wrap w-full mt-5 lg:mt-8 xl:mt-7 pb-3">
+        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0">
           <aside class="ps-0 lg:ps-6 mb-5 lg:mb-0" style="position: sticky; top: 60px">
             <h3 class="mb-5" data-aos="fade-up">Details</h3>
             <dl class="mb-5 block" data-aos="fade-up">
@@ -55,8 +55,8 @@
             </ActionButton>
           </aside>
         </div>
-        <main class="col-span-12 lg:col-span-8 order-1 lg:order-2">
-          <div class="col-span-12 lg:col-span-11 xl:col-span-10">
+        <main class="w-full lg:w-2/3 order-1 lg:order-2">
+          <div class="w-full lg:w-5/6 pr-4 pl-4 xl:w-4/5">
             <CodeLine :number="'//'" class="mb-5 lg:mb-4">
               <span class="code--yellow">npm</span>
               <span class="code--green">&nbsp;run</span>
