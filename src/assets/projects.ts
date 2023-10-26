@@ -1,7 +1,7 @@
 import { type Project } from "@/utils/types";
 
 
-export const portfolio: Project[] = [
+export const projects: Project[] = [
     {
         "id": "809638233",
         "title": "The Forex Masterminds",

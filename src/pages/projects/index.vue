@@ -5,13 +5,13 @@
 import {gsap} from "gsap";
 import {Draggable} from "gsap/Draggable";
 
-const portfolioData = usePortfolio();
+const portfolioData = useProject();
 const selected = ref(0);
 const router = useRouter()
 const portfolioScrollPercentage = computed(() => 0);
 
 useHead({
-  title: 'Explore Portfolio | Utitofon Udoekong',
+  title: 'Explore Projects | Utitofon Udoekong',
   meta: [
     {
       name: 'description',

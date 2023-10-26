@@ -13,10 +13,13 @@
               About
             </RouterLink>
             <RouterLink to="/portfolio" class="mouse-md">
-              Projects
+              Portfolio
             </RouterLink>
             <RouterLink to="/contact" class="mouse-md">
               Contact
+            </RouterLink>
+            <RouterLink to="/projects" class="mouse-md">
+              Projects
             </RouterLink>
           </nav>
         </div>

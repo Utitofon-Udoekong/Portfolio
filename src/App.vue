@@ -174,12 +174,9 @@ useHead({
 
 <template>
   <div class="">
-    <section class="pointer-events-none overflow-hidden w-screen h-screen  relative">
+    <!-- <section class="pointer-events-none overflow-hidden w-screen h-screen  relative">
       <h1 class="counter fixed w-full h-full flex justify-end items-end z-50">{{ currentValue }}%</h1>
-      <!-- <div class="header w-full flex flex-col-reverse items-center justify-center">
-          <p class="FN">UTITOFON</p>
-          <p class="FN">UDOEKONG</p>
-        </div> -->
+    
       <div class="overlay inset-0 fixed w-screen h-screen z-10 flex">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -194,7 +191,7 @@ useHead({
       </div>
 
       
-    </section>
+    </section> -->
     <Hero/>
     <RouterView />
     <Cursor />

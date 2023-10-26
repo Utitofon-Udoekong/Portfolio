@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from '@/utils/types';
+// import type { Project } from '@/utils/types';
 
 interface Props{
-  portfolioData: Project[]
+  portfolioData: array
   selected: number,
 }
 const props = defineProps<Props>();

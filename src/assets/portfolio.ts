@@ -8,7 +8,7 @@ export const portfolio: Project[] = [
         "type": "Website Development",
         "cover": "fortfolio/cover",
         "client": "Fortfolio limited",
-        "address": "https://fortfolio.info",
+        "address": "https://fortfolio-bice.vercel.app/",
         "completed": 2021,
         "stack": [
             {
