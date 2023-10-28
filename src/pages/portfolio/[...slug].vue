@@ -61,45 +61,24 @@ const paginatePrev = () => {
   updateSelected(newSelected);
 }
 
-// onMounted(() => {
-
-
-//   // Keyboard Events
-//   useEventListener(document, 'keyup', (event) => {
-//     let newSelected = selected.value;
-//     if (event.key === 'ArrowRight') {
-//       newSelected += 1
-//       updateSelected(newSelected);
-//       return;
-//     }
-//     if (event.key === 'ArrowLeft') {
-//       newSelected -= 1
-//       updateSelected(newSelected);
-//       return;
-//     }
-  
-//   });
-
-
-// });
 
 useHead({
-  title: 'Case Study: ' + currentPortfolioItem.value['title'] + ', ' + currentPortfolioItem.value['type'] + ' | ' + 'Marchant Web',
+  title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Marchant Web',
   meta: [
-    { hid: 'description', name: 'description', content:  currentPortfolioItem.value['lead'] },
-    { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value['title'] },
-    { hid: 'og:url', property: 'og:url', content: 'https://marchantweb.com' + route.fullPath },
-    { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value['lead'] },
+    { hid: 'description', name: 'description', content:  currentPortfolioItem.value.lead },
+    { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value.title },
+    { hid: 'og:url', property: 'og:url', content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
+    { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value.lead },
     { hid: 'og:image', property: 'og:image', content: currentPortfolioItem.value['cover']},
 
     // twitter card
-    { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value['title'] },
-    { hid: "twitter:url", name: "twitter:url", content: 'https://marchantweb.com' + route.fullPath },
-    { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value['lead'] },
+    { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value.title },
+    { hid: "twitter:url", name: "twitter:url", content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
+    { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value.lead },
     { hid: "twitter:image", name: "twitter:image", content: currentPortfolioItem.value['cover']},
   ],
   link: [
-    { hid: "canonical", rel: "canonical", href: 'https://marchantweb.com' + route.fullPath },
+    { hid: "canonical", rel: "canonical", href: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
   ],
   bodyAttrs: {
     class: 'enable-scroll'
@@ -155,11 +134,10 @@ useHead({
               <dd v-if="currentPortfolioItem['awards']" v-html="currentPortfolioItem['awards'].replace(/\n/g, '<br />')"></dd> -->
 
             </dl>
-            <ActionButton :to="currentPortfolioItem.address" target="_blank" data-aos="fade-up">
+            <ActionButton :to="currentPortfolioItem.address" data-aos="fade-up">
               <i class="fa-sharp fa-regular fa-calendar-range fa-lg"></i>
               View Project
             </ActionButton>
-            <a :href="currentPortfolioItem.address" target="_blank">View Project</a>
           </aside>
         </div>
 
@@ -171,13 +149,14 @@ useHead({
               <span class="code--white">&nbsp;case_study</span>
             </CodeLine>
             <h1 class="mb-4 lg:mb-5" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
+            <p v-if="currentPortfolioItem.about">{{ currentPortfolioItem.about }}</p>
           </div>
 
           <!-- Image carousel -->
           <div class="flex justify-between">
             <div class="ms-6">
               <CodeLine :number="'//'" class="mb-5 lg:mb-4">
-                <span class="code--yellow">uu</span>
+                <span class="code--yellow">npm</span>
                 <span class="code--green">&nbsp;run</span>
                 <span class="code--white">&nbsp;showcase</span>
               </CodeLine>

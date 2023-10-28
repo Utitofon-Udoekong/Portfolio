@@ -19,6 +19,7 @@ declare module 'vue' {
     NavMenu: typeof import('./components/NavMenu.vue')['default']
     PorjectItemCover: typeof import('./components/PorjectItemCover.vue')['default']
     PortfolioScrubber: typeof import('./components/PortfolioScrubber.vue')['default']
+    Preloader: typeof import('./components/Preloader.vue')['default']
     ProjectCover: typeof import('./components/ProjectCover.vue')['default']
     ProjectItemCover: typeof import('./components/ProjectItemCover.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

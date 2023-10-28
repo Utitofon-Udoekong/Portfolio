@@ -39,9 +39,9 @@ const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager
 const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
   const clientName = key.split('/')?.[5]
   const fileName = filename(key)
+  //@ts-ignore
   return [clientName+fileName,value.default]
 }))
-console.log(images)
 </script>
 
 <template>

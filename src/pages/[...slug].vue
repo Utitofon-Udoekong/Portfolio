@@ -11,7 +11,7 @@
             <span class="code--green">&nbsp;not</span>
             <span class="code--white">&nbsp;found</span>
           </CodeLine>
-          <h1 class="mb-5 lead">OH SH***T;</h1>
+          <h1 class="mb-5 lead">OH NO;</h1>
           <p class="text-light mb-6">
             Looks you've navigated to a broken link.<br><em>Try not doing that again in the future.</em>
           </p>

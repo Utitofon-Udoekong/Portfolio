@@ -1,7 +1,7 @@
 <template>
-  <RouterLink :to="props.to" class="action-button mouse-md" :target="props.external ? props.external : null">
+  <a :href="props.to" class="action-button mouse-md" target="_blank">
     <slot/>
-  </RouterLink>
+  </a>
 </template>
 
 <script setup lang="ts">
@@ -11,10 +11,6 @@ const props = defineProps({
     type: String,
     required: true
   },
-  external: {
-    type: String,
-    default: null
-  }
 })
 
 </script>

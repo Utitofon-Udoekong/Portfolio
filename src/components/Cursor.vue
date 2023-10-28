@@ -29,7 +29,7 @@ gsap.ticker.add(() => {
 const isCursorVisible = ref(false);
 const cursorClasses = computed(() => {
     return {
-        'cursor d-none d-xl-block': true,
+        'cursor hidden lg:block': true,
         'cursor--hidden': !isCursorVisible.value,
     }
 });

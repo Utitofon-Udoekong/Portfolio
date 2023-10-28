@@ -113,7 +113,7 @@ const navClasses = computed(() => {
 
       &:nth-child(2){
         transition: transform 0.7s cubic-bezier(0.7, 0, 0, 1);
-        transform: translate(min(-45vw, -750px));
+        transform: translate(min(-45vw, -800px));
       }
 
       &:nth-child(3){

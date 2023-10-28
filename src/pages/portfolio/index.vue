@@ -15,12 +15,12 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Senior front end engineer with 10+ years building creative websites, interactive experiences and custom web software.'
+      content: 'Senior front end engineer with 4+ years building creative websites, interactive experiences and custom web software.'
     }
   ]
 });
 
-const {width, height} = useWindowSize();
+const {width} = useWindowSize();
 const portfolioItemWidth = computed(() => {
   if (width.value > 1680) {
     return 1040;
@@ -63,7 +63,7 @@ const updateSelected = (selectedIndex: number) => {
  * Updates the selected project, called by drag and touch events
  * @param event
  */
-const updateDragSelected = function (event) {
+const updateDragSelected = function (event: any) {
   //@ts-ignore
   let selectedIndex = Math.floor(Math.abs((this.endX) / portfolioItemWidth.value));
   selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
@@ -215,7 +215,7 @@ function setupDraggable() {
 
         <div class="feed-section__container-padding"/>
 
-        <ProjectCover :aria-posinset="index" :aria-setsize="portfolioData.length" :portfolioItem="portfolioItem"
+        <ProjectCover path="/portfolio/" :aria-posinset="index" :aria-setsize="portfolioData.length" :portfolioItem="portfolioItem"
                       :index="index"
                       v-for="(portfolioItem, index) in portfolioData" :isFocused="index === selected"/>
 

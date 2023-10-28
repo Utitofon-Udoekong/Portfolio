@@ -4,13 +4,13 @@ import { filename } from '@/utils/types';
 
 
 const route = useRoute();
-const portfolioData = usePortfolio();
+const portfolioData = useProject();
 const selected = ref(0);
 const portfolioScrollPercentage = computed(() => 0);
 
 const currentPortfolioItem = computed(() => {
   //@ts-ignore
-  return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"])];
+  return portfolioData[portfolioData.findIndex(project => project.slug === route.params["slug"])];
 });
 
 const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager: true })
@@ -61,45 +61,28 @@ const paginatePrev = () => {
   updateSelected(newSelected);
 }
 
-// onMounted(() => {
-
-
-//   // Keyboard Events
-//   useEventListener(document, 'keyup', (event) => {
-//     let newSelected = selected.value;
-//     if (event.key === 'ArrowRight') {
-//       newSelected += 1
-//       updateSelected(newSelected);
-//       return;
-//     }
-//     if (event.key === 'ArrowLeft') {
-//       newSelected -= 1
-//       updateSelected(newSelected);
-//       return;
-//     }
-  
-//   });
-
-
-// });
+onMounted(() => {
+  //@ts-ignore
+  console.log(route.params["slug"])
+})
 
 useHead({
   title: 'Case Study: ' + currentPortfolioItem.value['title'] + ', ' + currentPortfolioItem.value['type'] + ' | ' + 'Marchant Web',
   meta: [
     { hid: 'description', name: 'description', content:  currentPortfolioItem.value['lead'] },
     { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value['title'] },
-    { hid: 'og:url', property: 'og:url', content: 'https://marchantweb.com' + route.fullPath },
+    { hid: 'og:url', property: 'og:url', content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
     { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value['lead'] },
     { hid: 'og:image', property: 'og:image', content: currentPortfolioItem.value['cover']},
 
     // twitter card
     { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value['title'] },
-    { hid: "twitter:url", name: "twitter:url", content: 'https://marchantweb.com' + route.fullPath },
+    { hid: "twitter:url", name: "twitter:url", content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
     { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value['lead'] },
     { hid: "twitter:image", name: "twitter:image", content: currentPortfolioItem.value['cover']},
   ],
   link: [
-    { hid: "canonical", rel: "canonical", href: 'https://marchantweb.com' + route.fullPath },
+    { hid: "canonical", rel: "canonical", href: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
   ],
   bodyAttrs: {
     class: 'enable-scroll'
@@ -155,11 +138,10 @@ useHead({
               <dd v-if="currentPortfolioItem['awards']" v-html="currentPortfolioItem['awards'].replace(/\n/g, '<br />')"></dd> -->
 
             </dl>
-            <ActionButton :to="currentPortfolioItem.address" target="_blank" data-aos="fade-up">
+            <ActionButton :to="currentPortfolioItem.address" data-aos="fade-up">
               <i class="fa-sharp fa-regular fa-calendar-range fa-lg"></i>
               View Project
             </ActionButton>
-            <a :href="currentPortfolioItem.address" target="_blank">View Project</a>
           </aside>
         </div>
 

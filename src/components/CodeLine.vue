@@ -138,6 +138,22 @@ const codeLineClasses = computed(() => {
         background-color: #DF802F;
       }
     }
+
+    :deep(span.code--blue){
+      color: #2160e9;
+
+      &:after{
+        background-color: #2160e9;
+      }
+    }
+
+    :deep(span.code--light--blue){
+      color: #2fb6df;
+
+      &:after{
+        background-color: #2fb6df;
+      }
+    }
   }
 }
 

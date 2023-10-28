@@ -3,70 +3,35 @@ import { type Project } from "@/utils/types";
 
 export const projects: Project[] = [
     {
-        "id": "809638233",
-        "title": "The Forex Masterminds",
-        "slug": "tfxm-website",
-        "type": "Website Development",
-        "cover": "@/assets/images/projects/mastermind/cover.png",
-        "client": "TFXM",
-        "address": "https://theforexmasterminds.vercel.app/",
-        "completed": 2022,
-        "stack": [
-            {
-                "name": "Nuxt",
-                "color": "green"
-            },
-            {
-                "name": "Paystack",
-                "color": "blue"
-            },
-            {
-                "name": "Tailwind",
-                "color": "blue"
-            },
-            
-        ],
-        "role": "Lead Developer",
-        "lead": "Watch, follow, copy and profit together. Trade the market ny following the signals given by our experts",
-        "images": [
-            "@/assets/images/projects/trailblazers/0.png",
-            "@/assets/images/projects/trailblazers/1.png",
-            "@/assets/images/projects/trailblazers/2.png",
-            "@/assets/images/projects/trailblazers/3.png",
-            "@/assets/images/projects/trailblazers/4.png",
-            "@/assets/images/projects/trailblazers/5.png",
-        ]
-    },
-    {
         "id": "003790951",
         "title": "Trailblazers",
         "slug": "trailblazers-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/trailblazers/cover.png",
+        "cover": "trailblazers/cover",
         "client": "Trailblazers Investing",
         "address": "https://trailblazers.vercel.app/",
         "completed": 2021,
         "stack": [
             {
                 "name": "Nuxt",
-                "color": "green"
+                "color": "code--green"
             },
             {
                 "name": "Paystack",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "Tailwind",
-                "color": "blue"
+                "color": "code--light--blue"
             },
         ],
         "role": "Lead Developer",
         "lead": "Watch, follow, copy and profit together. Trade the market ny following the signals given by our experts",
         "images": [
-            "@/assets/images/projects/trailblazers/0.png",
-            "@/assets/images/projects/trailblazers/1.png",
-            "@/assets/images/projects/trailblazers/2.png",
-            "@/assets/images/projects/trailblazers/3.png",
+            "trailblazers/0",
+            "trailblazers/1",
+            "trailblazers/2",
+            "trailblazers/3",
         ]
     },
     {
@@ -74,27 +39,27 @@ export const projects: Project[] = [
         "title": "Cryzo Shop",
         "slug": "cryzo-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/cryzo/cover.png",
+        "cover": "cryzo/cover",
         "client": "Design Project",
-        "address": "https://cryzo-shop.netlify.app",
+        "address": "https://cryzoshop.netlify.app",
         "completed": 2021,
         "stack": [
             {
                 "name": "Vue",
-                "color": "green"
+                "color": "code--green"
             },
             {
                 "name": "Tailwind",
-                "color": "blue"
+                "color": "code--light--blue"
             },
         ],
         "role": "Lead Developer",
         "lead": "Your ultimate online destination for quality products, guaranteed to exceed your expectations and ensure customer satisfaction.",
         "images": [
-            "@/assets/images/projects/cryzo/0.png",
-            "@/assets/images/projects/cryzo/1.png",
-            "@/assets/images/projects/cryzo/2.png",
-            "@/assets/images/projects/cryzo/3.png",
+            "cryzo/0",
+            "cryzo/1",
+            "cryzo/2",
+            "cryzo/3",
         ]
     },
     {
@@ -102,36 +67,36 @@ export const projects: Project[] = [
         "title": "E-Games",
         "slug": "egames-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/egames/cover.png",
+        "cover": "egames/cover",
         "client": "Design Project",
         "address": "https://e-games.netlify.app",
         "completed": 2020,
         "stack": [
             {
                 "name": "HTML",
-                "color": "orange"
+                "color": "code--orange"
             },
             {
                 "name": "JAVASCRIPT",
-                "color": "yellow"
+                "color": "code--yellow"
             },
             {
                 "name": "CSS",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "AOS",
-                "color": "pink"
+                "color": "code--light--blue"
             }
         ],
         "role": "Lead Developer",
         "lead": "Unleash Your Gaming Passion! Join us for thrilling adventures and unparalleled customer satisfaction in the world of online gaming",
         "images": [
-            "@/assets/images/projects/egames/0.png",
-            "@/assets/images/projects/egames/1.png",
-            "@/assets/images/projects/egames/2.png",
-            "@/assets/images/projects/egames/3.png",
-            "@/assets/images/projects/egames/4.png",
+            "egames/0",
+            "egames/1",
+            "egames/2",
+            "egames/3",
+            "egames/4",
         ]
     },
     {
@@ -139,38 +104,38 @@ export const projects: Project[] = [
         "title": "Chop life",
         "slug": "chop-life-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/chop-life/cover.png",
+        "cover": "chop-life/cover",
         "client": "Design Project",
         "address": "https://chop-lifey.netlify.app",
         "completed": 2020,
         "stack": [
             {
                 "name": "HTML",
-                "color": "orange"
+                "color": "code--orange"
             },
             {
                 "name": "JAVASCRIPT",
-                "color": "yellow"
+                "color": "code--yellow"
             },
             {
                 "name": "CSS",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "AOS",
-                "color": "pink"
+                "color": "code--light--blue"
             }
         ],
         "role": "Lead Developer",
         "lead": "Delight your taste buds with our online restaurant, serving satisfaction on every plate.",
         "images": [
-            "@/assets/images/projects/chop-life/0.png",
-            "@/assets/images/projects/chop-life/1.png",
-            "@/assets/images/projects/chop-life/2.png",
-            "@/assets/images/projects/chop-life/3.png",
-            "@/assets/images/projects/chop-life/4.png",
-            "@/assets/images/projects/chop-life/5.png",
-            "@/assets/images/projects/chop-life/6.png",
+            "chop-life/0",
+            "chop-life/1",
+            "chop-life/2",
+            "chop-life/3",
+            "chop-life/4",
+            "chop-life/5",
+            "chop-life/6",
         ]
     },
    
@@ -179,37 +144,37 @@ export const projects: Project[] = [
         "title": "Hand Rock",
         "slug": "handrock-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/watch/cover.png",
+        "cover": "watch/cover",
         "client": "Design Project",
         "address": "https://handrock.netlify.app/",
         "completed": 2020,
         "stack": [
             {
                 "name": "HTML",
-                "color": "orange"
+                "color": "code--orange"
             },
             {
                 "name": "JAVASCRIPT",
-                "color": "yellow"
+                "color": "code--yellow"
             },
             {
                 "name": "CSS",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "AOS",
-                "color": "pink"
+                "color": "code--light--blue"
             }
         ],
         "role": "Lead Developer",
         "lead": "Latest arrival of the new imported watches of the B720 series, with a modern and resistant design.",
         "images": [
-            "@/assets/images/projects/watch/0.png",
-            "@/assets/images/projects/watch/1.png",
-            "@/assets/images/projects/watch/2.png",
-            "@/assets/images/projects/watch/3.png",
-            "@/assets/images/projects/watch/4.png",
-            "@/assets/images/projects/watch/5.png",
+            "watch/0",
+            "watch/1",
+            "watch/2",
+            "watch/3",
+            "watch/4",
+            "watch/5",
         ]
     },
     {
@@ -217,25 +182,25 @@ export const projects: Project[] = [
         "title": "Dashlite",
         "slug": "dashlite-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/dashlite/cover.png",
+        "cover": "dashlite/cover",
         "client": "Design Project",
         "address": "https://dash-lite.netlify.app",
         "completed": 2020,
         "stack": [
             {
                 "name": "Nuxtjs",
-                "color": "green"
+                "color": "code--green"
             },
             {
                 "name": "Tailwind",
-                "color": "blue"
+                "color": "code--light--blue"
             },
         ],
         "role": "Developer",
         "lead": "A minimal dashboard page made with nuxtjs and tailwind",
         "images": [
-            "@/assets/images/projects/dashlite/0.png",
-            "@/assets/images/projects/dashlite/1.png",
+            "dashlite/0",
+            "dashlite/1",
         ]
     },
     {
@@ -243,34 +208,36 @@ export const projects: Project[] = [
         "title": "Trim Barbers",
         "slug": "trim-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/trim/0.png",
+        "cover": "trim/0",
         "client": "Trim Barbers",
         "address": "https://trim-barbers.netlify.app",
         "completed": 2020,
         "stack": [
             {
                 "name": "HTML",
-                "color": "orange"
+                "color": "code--orange"
             },
             {
                 "name": "JAVASCRIPT",
-                "color": "yellow"
+                "color": "code--yellow"
             },
             {
                 "name": "CSS",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "AOS",
-                "color": "blue"
+                "color": "code--light--blue"
             }
         ],
         "role": "Lead Developer",
         "lead": "Trim Barbers: Expert grooming for exceptional results.",
         "images": [
-            "@/assets/images/projects/trim/0.png",
-            "@/assets/images/projects/trim/1.png",
-            "@/assets/images/projects/trim/2.png",
+            "trim/0",
+            "trim/1",
+            "trim/2",
+            "trim/3",
+            "trim/4",
         ]
     },
     {
@@ -278,34 +245,34 @@ export const projects: Project[] = [
         "title": "Charity",
         "slug": "charity-website",
         "type": "Website Development",
-        "cover": "@/assets/images/projects/charity/cover.png",
+        "cover": "charity/cover",
         "client": "Design Project",
         "address": "https://the-charity.netlify.app",
         "completed": 2019,
         "stack": [
             {
                 "name": "HTML",
-                "color": "orange"
+                "color": "code--orange"
             },
             {
                 "name": "JAVASCRIPT",
-                "color": "yellow"
+                "color": "code--yellow"
             },
             {
                 "name": "CSS",
-                "color": "blue"
+                "color": "code--blue"
             },
             {
                 "name": "AOS",
-                "color": "pink"
+                "color": "code--light--blue"
             }
         ],
         "role": "Lead Developer",
         "lead": "Empowering lives, making a difference. Join us for a fulfilling and satisfying giving experience.",
         "images": [
-            "@/assets/images/projects/charity/0.png",
-            "@/assets/images/projects/charity/1.png",
-            "@/assets/images/projects/charity/2.png",
+            "charity/0",
+            "charity/1",
+            "charity/2",
         ]
     },
 ]

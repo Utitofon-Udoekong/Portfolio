@@ -20,13 +20,13 @@
                 <StatusIndicator type="dark" />
               </div>
             </div>
-            <h2 class="my-4" itemprop="description">Senior front end engineer with 10+ years building creative websites,
+            <h2 class="my-4" itemprop="description">Senior software engineer with 4+ years building creative websites,
               interactive
               experiences
               and custom web software.</h2>
             <div itemprop="knowsAbout">
               <p>
-                Hey I’m Simon, a creative front end engineer based in Orlando, Florida. I'm passionate about creating
+                Hey I’m Utitofon, a creative software engineer based in Uyo, Nigeria. I'm passionate about creating
                 incredible user experiences with web technology. I specialize in programming with <a
                   href="https://vuejs.org/" target="_blank" class="mouse-sm">Vue</a>,
                 <a href="https://nuxt.com/" target="_blank" class="mouse-sm">Nuxt</a>, and <a
@@ -34,15 +34,15 @@
                 although I have an extensive full-stack development background.
               </p>
               <p>
-                I love writing code but I'm also experienced in UX consulting, with a keen eye for detail and an
+                I love writing code, with a keen eye for detail and an
                 understanding of interaction design and best practices. I’ve worked on many projects where I start early
                 in
-                the discovery process, guide and design the UX from the ground up, and then get to work building it.
+                the discovery process, guide and get to work building the UI.
               </p>
             </div>
             <h3 class="mt-5 mb-4">Clients &amp; Partners</h3>
             <p class="mb-4">
-              Over the past 10+ years I've had the opportunity to work alongside some of the most talented people in the
+              Over the past 4+ years I've had the opportunity to work alongside some of the most talented people in the
               industry for some incredible clients, such as:
             </p>
           </div>
@@ -69,22 +69,22 @@
             </div>
           </div>
           <div class="mb-4 lg:mb-8">
-            <h3 class="mt-5 mb-4">Freelancing &amp; Consulting</h3>
+            <h3 class="mt-5 mb-4">Freelancing</h3>
             <p>
-              <strong>I specialize in expert consulting, UX design, and front end programming for agencies that are
-                building cutting-edge web experiences for their clients.</strong> From solo work to supporting your team
+              <strong>I specialize in expert development of mobile applications, desktop applications, and full stack programming for agencies that are
+                building cutting-edge web and mobile experiences for their clients.</strong> From solo work to supporting your team
               as a technical lead, I'm here to help;
               working efficiently and collaboratively to bring each project to life.
             </p>
-            <p>My hourly rate for work-for-hire <em>(UX design and development)</em> is $180/hr., whereas consulting is
+            <!-- <p>My hourly rate for work-for-hire <em>(UX design and development)</em> is $180/hr., whereas consulting is
               billed at $225/hr. I’m always happy to provide an estimate for any project following an initial discovery
-              call.</p>
+              call.</p> -->
             <h3 class="mt-5 mb-4">
               Get in Touch
             </h3>
             <p class="mb-5">
               Thanks for reading a little bit about me. I’m always happy to chat and provide any helpful advice that I
-              can. You can schedule a discovery call to see if we’re a good fit, or just email at <a
+              can. You can email at <a
                 href="mailto:utitofonudoekong0@gmail.com" class="mouse-sm"
                 itemprop="email">utitofonudoekong0@gmail.com</a>.
             </p>
@@ -106,17 +106,12 @@
 </template>
   
 <script setup lang="ts">
-import ActionButton from '@/components/ActionButton.vue'
-import StatusIndicator from '@/components/StatusIndicator.vue'
-import CodeTag from '@/components/CodeTag.vue'
-import { useHead } from '@unhead/vue'
-
 useHead({
   title: 'Hey, I\'m Utitofon | Utitofon Udoekong',
   meta: [
     {
       name: 'description',
-      content: 'Senior front end engineer with 10+ years building creative websites, interactive experiences and custom web software.'
+      content: 'Senior software engineer with 4+ years building creative websites, interactive experiences and custom web software.'
     }
   ],
   bodyAttrs: {
@@ -188,12 +183,5 @@ useHead({
   }
 }
 
-.headshot {
-  width: 100px;
-  border-radius: 50%;
-
-  @media screen and (max-width: 992px) {
-    width: 70px;
-  }
-}</style>
+</style>
   

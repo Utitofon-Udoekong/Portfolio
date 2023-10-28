@@ -256,7 +256,7 @@ const heroClasses = computed(() => {
     <CodeLine v-if="route.path === '/contact'" number="03" class="click-discovery">
       <span class="code--orange">@click</span>
       <span class="code--white">(e) => { new</span>
-      <span class="code--purple">&nbsp;DiscoverySession</span>
+      <span class="code--purple">&nbsp;SendEmail</span>
       <span class="code--white">(e)</span>
       <span class="code--orange">;</span>
     </CodeLine>
@@ -285,10 +285,6 @@ const heroClasses = computed(() => {
           <span class="line-number__line" v-once v-for="i in 50"><span v-if="i < 10">0</span>{{ i }}</span>
         </div>
       </div>
-      <!-- <div class="header w-full flex flex-col-reverse items-center justify-center">
-          <p class="FN">UTITOFON</p>
-          <p class="FN">UDOEKONG</p>
-        </div> -->
       <!-- WebGL Canvas -->
       <canvas id="hero-canvas" :class="heroClasses" ref="canvas" :width="width" :height="height" />
 

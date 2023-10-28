@@ -4,9 +4,11 @@ interface Props{
   portfolioItem: Project
   index: number,
   isFocused?: boolean
+  path: string
 }
 
 const props = defineProps<Props>();
+const projectCover = ref(null)
 
 const currentPortfolioItem = toRef(props, 'portfolioItem');
 
@@ -19,6 +21,20 @@ const { width, height } = useWindowSize();
 const { x, y } = useMouse();
 const parallaxOffset = 30;
 
+const {height: imageHeight} = useElementSize(projectCover)
+
+const getDurationFromHeight = () => {
+  if(imageHeight.value > 5000){
+    return 50
+  }else if(imageHeight.value > 3000){
+    return 40
+  }else if(imageHeight.value > 1000){
+    return 20
+  }else{
+    return 10
+  }
+}
+
 /**
  * Determine the inline styles to apply to the element
  */
@@ -28,20 +44,24 @@ const elementStyle = computed(() => {
   }
 });
 
+const projectCoverAnimationDuration = computed(() => {
+  console.log(imageHeight.value);
+  console.log(`${getDurationFromHeight()}s linear 1s infinite alternate backdrop-scroll`)
+  return `${getDurationFromHeight()}s linear 1s infinite alternate backdrop-scroll`
+})
+
 const elementClasses = computed(() => {
   return {
     'project-cover': true,
     'project-cover--focused': props.isFocused
   }
 });
-
 const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager: true })
 const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
   const clientName = key.split('/')?.[5]
   const fileName = filename(key)
   return [clientName+fileName,value.default]
 }))
-console.log(images)
 </script>
 
 <template>
@@ -59,7 +79,7 @@ console.log(images)
       </div>
       <div class="justify-end hidden lg:flex">
         <CodeLine v-if="props.isFocused" :number="'//'">
-          <span class="code--white" v-for="stackItem, stackIndex in currentPortfolioItem.stack "> 
+          <span :class="stackItem.color" v-for="stackItem, stackIndex in currentPortfolioItem.stack "> 
             {{stackItem.name}} <span class="px-1" v-if="stackIndex < currentPortfolioItem.stack.length - 1" > | </span>
           </span>
         </CodeLine>
@@ -67,10 +87,10 @@ console.log(images)
     </div>
 
     <!-- Cover -->
-    <RouterLink :to="'/portfolio/' + currentPortfolioItem.slug">
+    <RouterLink :to="path + currentPortfolioItem.slug">
       <div class="project-cover__video-container" >
         <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
-        <img class="project-cover__video mouse-md" :src="images[currentPortfolioItem.cover]" alt="">
+        <img class="project-cover__video mouse-md" :src="images[currentPortfolioItem.cover]" alt="" ref="projectCover">
         <!-- <p>{{ images['zaga/cover'] }}</p> -->
       </div>
     </RouterLink>
@@ -158,7 +178,7 @@ console.log(images)
     transition-delay: 0.2s;
   }
   .project-cover__video{
-    animation: 10s linear 1s infinite alternate backdrop-scroll;
+    animation: 30s linear 1s infinite alternate backdrop-scroll;
   }
 
   .tech-stack {
