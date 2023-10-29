@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted, defineAsyncComponent } from 'vue';
 
 const Cursor = defineAsyncComponent(() => import("@/components/Cursor.vue"))
 const Hero = defineAsyncComponent(() => import("@/components/Hero.vue"))
@@ -127,7 +126,6 @@ useHead({
 
 <template>
   <div class="">
-    <Preloader />
     <Hero/>
     <RouterView />
     <Cursor />

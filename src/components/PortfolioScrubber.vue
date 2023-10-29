@@ -1,16 +1,16 @@
 <template>
   <ol class="portfolio-links" :style="{ '--selector-offset': (5 + (selected * 40)) + 'px' }">
-    <li v-for="portfolioItem, index in portfolioData"
+    <li v-for="_, index in portfolioData"
         :class="{ 'portfolio-links--active': index === selected }" ><a href="#" @click.prevent="updateSelected(index)"
                                                                       class="mouse-sm">{{ index }}</a></li>
   </ol>
 </template>
 
 <script setup lang="ts">
-// import type { Project } from '@/utils/types';
+import type { Project } from '@/utils/types';
 
 interface Props{
-  portfolioData: array
+  portfolioData: Project[] | string[]
   selected: number,
 }
 const props = defineProps<Props>();

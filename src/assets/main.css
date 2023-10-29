@@ -244,13 +244,13 @@ h3 {
 
 .tech-stack li, .location-indicator, .text-small {
   font-size: 0.9rem;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inconsolata', monospace;
   font-weight: 400;
   letter-spacing: 0.2px;
 }
 
 .code-tag, .line-number__line, .line-number__line span {
-  /* font-family: "JetBrains Mono", sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
   font-weight: 400;
   color: #AFBFD6;
   font-size: 0.9rem;

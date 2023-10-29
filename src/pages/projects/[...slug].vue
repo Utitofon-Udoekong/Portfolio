@@ -138,10 +138,10 @@ useHead({
               <dd v-if="currentPortfolioItem['awards']" v-html="currentPortfolioItem['awards'].replace(/\n/g, '<br />')"></dd> -->
 
             </dl>
-            <ActionButton :to="currentPortfolioItem.address" data-aos="fade-up">
-              <i class="fa-sharp fa-regular fa-calendar-range fa-lg"></i>
+            <LinkButton :to="currentPortfolioItem.address" data-aos="fade-up">
+              <i class="fa-sharp fa-regular fa-globe fa-lg"></i>
               View Project
-            </ActionButton>
+            </LinkButton>
           </aside>
         </div>
 
@@ -159,7 +159,7 @@ useHead({
           <div class="flex justify-between">
             <div class="ms-6">
               <CodeLine :number="'//'" class="mb-5 lg:mb-4">
-                <span class="code--yellow">uu</span>
+                <span class="code--yellow">npm</span>
                 <span class="code--green">&nbsp;run</span>
                 <span class="code--white">&nbsp;showcase</span>
               </CodeLine>
@@ -185,14 +185,13 @@ useHead({
 
               <ProjectItemCover :aria-posinset="index" :aria-setsize="currentPortfolioItem.images.length" :portfolioItem="currentPortfolioItem"
                             :index="index"
-                            v-for="(portfolioItem, index) in currentPortfolioItem.images" :isFocused="index === selected"/>
+                            v-for="(_, index) in currentPortfolioItem.images" :isFocused="index === selected"/>
 
               <div class="feed-section__extraElement"/>
 
               <div class="feed-section__container-padding"/>
             </div>
           </div>
-          <!-- <NotionContent :blocks="currentPortfolioItem['pageContent']"/> -->
           <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Marchant Web, LLC. All rights reserved.</p>
         </main>
       </div>

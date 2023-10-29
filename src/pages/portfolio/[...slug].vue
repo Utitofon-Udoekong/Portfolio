@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import gsap from 'gsap'
+import {gsap} from "gsap";
+import {Draggable} from "gsap/Draggable";
 import { filename } from '@/utils/types';
 
 
@@ -51,6 +52,26 @@ const portfolioItemWidth = computed(() => {
   });
 }
 
+/**
+ * Updates the selected project, called by drag and touch events
+ * @param event
+ */
+ const updateDragSelected = function (event: any) {
+  //@ts-ignore
+  let selectedIndex = Math.floor(Math.abs((this.endX) / portfolioItemWidth.value));
+  selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+  selectedIndex = selectedIndex > portfolioData.length - 1 ? portfolioData.length - 1 : selectedIndex;
+  selected.value = selectedIndex;
+  gsap.killTweensOf(portfolioScrollPercentage);
+  gsap.to(portfolioScrollPercentage, {
+    value: selected.value * (1 / portfolioData.length),
+    duration: 2,
+    ease: "power1.out"
+  });
+}
+
+let draggable: any = null;
+
 const paginateNext = () => {
   let newSelected = selected.value + 1;
   updateSelected(newSelected);
@@ -61,6 +82,53 @@ const paginatePrev = () => {
   updateSelected(newSelected);
 }
 
+onMounted(() => {
+
+  gsap.registerPlugin(Draggable);
+
+  setupDraggable();
+});
+onActivated(() => {
+  setupDraggable();
+});
+onUnmounted(() => {
+  if (draggable) {
+    draggable[0].kill();
+  }
+});
+
+function setupDraggable() {
+  if (draggable) {
+    return;
+  }
+  nextTick(() => {
+    const offsets = [];
+    for (let i = 0; i < portfolioData.length; i++) {
+      offsets.push((i * portfolioItemWidth.value) * -1);
+    }
+    const container = document.querySelector("#portfolio-feed");
+    if (!container) {
+      setTimeout(() => {
+        setupDraggable();
+      }, 100);
+      return;
+    }
+    draggable = Draggable.create(container, {
+      type: "x",
+      edgeResistance: 1,
+      snap: offsets,
+      inertia: true,
+      bounds: {
+        minX: 0,
+        maxX: portfolioItemWidth.value * (portfolioData.length - 1) * -1
+      },
+      //onDrag: updateDragSelected,
+      onDragEnd: updateDragSelected,
+      //allowNativeTouchScrolling: false,
+      zIndexBoost: false
+    });
+  });
+}
 
 useHead({
   title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Marchant Web',
@@ -88,20 +156,20 @@ useHead({
 </script>
 
 <template>
-  <section class="page">
+  <section class="absolute inset-0 py-8 md:py-16">
 
     <NavMenu/>
 
     <div class="container-xxxl">
 
-      <div class="flex flex-wrap mt-5">
+      <div class="flex flex-wrap mt-5 px-8 md:px-16">
         <div class="col-auto">
           <Logo :size="50" />
         </div>
       </div>
 
       <!-- Hero-->
-      <div class="flex flex-wrap mt-5 lg:mt-6">
+      <div class="flex flex-wrap mt-5 lg:mt-6 px-8 md:px-16">
         <div class="w-full lg:w-1/3">
           <CodeTag class="mb-2 lg:mb-3">{{ currentPortfolioItem.type }}</CodeTag>
           <h1 class="mb-3 lg:mb-10 project__name"> {{ currentPortfolioItem.title }} </h1>
@@ -113,7 +181,7 @@ useHead({
       </div>
 
       <div class="flex flex-wrap w-full mt-5 lg:mt-8 xl:mt-7 pb-3">
-        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0">
+        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0 px-8 md:px-16">
           <aside class="ps-0 lg:ps-6 mb-5 lg:mb-0" style="position: sticky; top: 60px">
             <h3 class="mb-5" data-aos="fade-up">Details</h3>
             <dl class="mb-5 block" data-aos="fade-up">
@@ -134,15 +202,15 @@ useHead({
               <dd v-if="currentPortfolioItem['awards']" v-html="currentPortfolioItem['awards'].replace(/\n/g, '<br />')"></dd> -->
 
             </dl>
-            <ActionButton :to="currentPortfolioItem.address" data-aos="fade-up">
-              <i class="fa-sharp fa-regular fa-calendar-range fa-lg"></i>
+            <LinkButton :to="currentPortfolioItem.address" data-aos="fade-up">
+              <i class="fa-sharp fa-regular fa-globe fa-lg"></i>
               View Project
-            </ActionButton>
+            </LinkButton>
           </aside>
         </div>
 
         <main class="w-full lg:w-2/3 order-1 lg:order-2">
-          <div class="w-full lg:w-5/6 pr-4 pl-4 xl:w-4/5 mb-10">
+          <div class="w-full lg:w-5/6 xl:w-4/5 mb-10 px-8 md:px-16">
             <CodeLine :number="'//'" class="mb-5 lg:mb-4">
               <span class="code--yellow">npm</span>
               <span class="code--green">&nbsp;run</span>
@@ -153,8 +221,8 @@ useHead({
           </div>
 
           <!-- Image carousel -->
-          <div class="flex justify-between">
-            <div class="ms-6">
+          <div class="flex justify-between relative px-8 md:px-16">
+            <div class="lg:ms-6">
               <CodeLine :number="'//'" class="mb-5 lg:mb-4">
                 <span class="code--yellow">npm</span>
                 <span class="code--green">&nbsp;run</span>
@@ -163,7 +231,7 @@ useHead({
               <PortfolioScrubber class="flex" :portfolioData="currentPortfolioItem.images" :selected="selected"
                                @updateSelected="updateSelected"/>
             </div>
-            <div class="col-auto relative">
+            <div class="relative hidden md:block">
               <!-- Pagination Controls -->
               <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="currentPortfolioItem.images">
                 <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
@@ -182,14 +250,13 @@ useHead({
 
               <ProjectItemCover :aria-posinset="index" :aria-setsize="currentPortfolioItem.images.length" :portfolioItem="currentPortfolioItem"
                             :index="index"
-                            v-for="(portfolioItem, index) in currentPortfolioItem.images" :isFocused="index === selected"/>
+                            v-for="(_, index) in currentPortfolioItem.images" :isFocused="index === selected"/>
 
               <div class="feed-section__extraElement"/>
 
               <div class="feed-section__container-padding"/>
             </div>
           </div>
-          <!-- <NotionContent :blocks="currentPortfolioItem['pageContent']"/> -->
           <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Marchant Web, LLC. All rights reserved.</p>
         </main>
       </div>

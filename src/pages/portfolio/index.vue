@@ -179,13 +179,13 @@ function setupDraggable() {
 </script>
 
 <template>
-  <section class="page">
+  <section class="absolute inset-0 px-0 py-8 md:p-16">
 
     <NavMenu/>
 
     <div class="container-xxxl pt-4 lg:pt-6">
       <div class="flex justify-between">
-        <div class="col-auto flex flex-row items-center">
+        <div class="flex flex-row items-center px-8 md:px-16">
 
           <!-- Back to Home -->
           <RouterLink class="back-link mouse-md" to="/"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Home
@@ -197,9 +197,9 @@ function setupDraggable() {
           </div>
 
         </div>
-        <div class="col-auto relative">
+        <div class="relative">
           <!-- Pagination Controls -->
-          <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="portfolioData">
+          <div class="pagination pe-5 lg:pe-6 !hidden lg:flex" v-if="portfolioData">
             <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
                @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
             <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
@@ -240,7 +240,7 @@ function setupDraggable() {
 
 <style lang="scss" scoped>
 
-*{
+* {
   user-select: none;
   -webkit-user-select: none;
 }
@@ -262,13 +262,12 @@ h1 {
   width: fit-content;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  // padding-bottom: 60px;
+  padding-bottom: 60px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 }
-
 
 .page-enter-from {
   opacity: 0;

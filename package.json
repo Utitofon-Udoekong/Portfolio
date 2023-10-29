@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@iconify-json/bi": "^1.1.19",
+    "@iconify-json/fa6-solid": "^1.1.15",
     "@iconify-json/mdi": "^1.0.12",
     "@tsconfig/node18": "^18.2.0",
     "@types/aos": "^3.0.4",

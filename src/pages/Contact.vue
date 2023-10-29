@@ -1,29 +1,23 @@
 <template>
-  <section class="page overflow-x-hidden">
+  <section class="page">
 
-    <div class="container-xxxl w-full">
-      <div class="max-w-xl">
-        <div class="mb-4">
-          <RouterLink class="back-link  mt-4 lg:mt-0" to="/">
-            <BiArrowUpLeft class="text-2xl mouse-md font-bold pe-3 text-white"/>
-            <p class="text-white">Back</p>
+    <div class="container-xxxl">
+      <div class="flex flex-wrap mt-0 lg:mt-6 justify-end">
+        <div class="w-full md:w-2/3 lg:w-3/5 xl:w-2/5 mb-4">
+          <RouterLink class="back-link !text-white mouse-md mt-4 lg:mt-0" to="/"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3 text-white "></i>Back
           </RouterLink>
           <CodeTag class="mt-5 mb-3">contact</CodeTag>
           <h1 class="mb-4">Let's Chat</h1>
           <p class="mb-4">Feel free to reach out. I'm always happy to chat to discuss ideas, feasibility, schedule,
             things like that. Or if you just have questions or want to say hi, that's cool too.</p>
-          <h2 class="mb-6">👋 <a href="mailto:utitofonudoekong0@gmail.com" target="blank" class="mouse-md"
-                                style="color: #1bbe8d">utitofonudoekong0@gmail.com</a></h2>
+          <h2 class="mb-7 break-all"><a href="mailto:utitofonudoekong0@gmail.com" target="blank" class="mouse-md"
+                                style="color: #7A4FEE">utitofonudoekong0@gmail.com</a></h2>
           <!-- <h3 class="mb-3">Discovery Session</h3>
-          <p>Once you're serious about working with me, the first step is to schedule a one-hour meeting to see if we're
-            a good fit, and to get on the same page about the work that you're looking for.</p>
-          <p class="mb-5"><strong>Please note that I bill $225 for an initial one-hour session.</strong> This helps me
-            to adequately prepare, block off the time, and ensure that the conversation is productive for both of us.
-          </p> -->
-          
-          <!-- <ActionButton to="https://calendly.com/marchantweb/discovery" target="_blank">
-            <MdiCalendarRangeOutline class="text-lg"/>
-            <p>Book a Discovery Session</p>
+          <p class="mb-4">If you want to dive more into your project specifics, you can schedule a 30-minute meeting to see if we're
+            a good fit.</p>
+          <ActionButton to="https://calendly.com/marchantweb/discovery" target="_blank">
+            <i class="fa-sharp fa-regular fa-calendar-range fa-lg"></i>
+            Book a Discovery Session
           </ActionButton> -->
         </div>
       </div>

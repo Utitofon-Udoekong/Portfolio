@@ -84,10 +84,6 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
   cursor: pointer;
   overflow: hidden;
   position: relative;
-
-  @media screen and (max-width: 992px) {
-    height: calc(100vh - 440px);
-  }
 }
 
 .project-cover__video {

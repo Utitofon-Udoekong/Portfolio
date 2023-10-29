@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import gsap from 'gsap';
-const heading = "Unlocking Innovation: Explore My Software Engineering Journey"
+const heading = "Innovate with My Software Engineering Journey"
 const headingChars = heading.split('');
 const router = useRouter()
 onMounted(() => {
@@ -15,10 +15,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="page">
+  <section >
     <NavMenu/>
 
-    <div id="bottom-bar" class="container-xxxl p-8 md:p-16">
+    <div id="bottom-bar" class="container-xxxl px-8 md:px-16">
       <div class="flex flex-wrap mb-3 lg:mb-5 xl:mb-6 justify-between items-end">
         <div class="w-5/6 sm:w-3/5 ">
           <svg class="lead-icon mb-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M18.5 9c1 1.06 1.5 2.394 1.5 4c0 3.466-3.7 4.276-5.5 9c-.667-.575-1-1.408-1-2.5c0-3.482 5-5.29 5-10.5Zm-4-4c1.2 1.238 1.8 2.572 1.8 4c0 4.951-6.045 5.692-4.8 13C9.833 20.84 9 19.173 9 17c0-3.325 5.5-6 5.5-12ZM10 1c1.333 1.667 2 3.167 2 4.5c0 6.25-8.5 8.222-4 16.5c-2.616-.58-4.5-3-4.5-6C3.5 9.5 10 8.5 10 1Z"/></svg>
@@ -29,12 +29,14 @@ onMounted(() => {
                   v-for="(char, index) in headingChars">{{ char }}
             </span>
           </h1>
-          <!-- <ActionButton to="/portfolio" data-aos="fade-right" class="lg:hidden mt-4 mb-4">
-            <p>Explore</p> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
-          </ActionButton> -->
-          <div class="flex mt-5">
-            <RouterLink class="back-link mouse-md inline-block lg:hidden mr-5" to="/about">About<svg class="text-lg pl-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></RouterLink>
-            <RouterLink class="back-link mouse-md inline-block lg:hidden" to="/contact">Contact<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></RouterLink>
+          <ActionButton to="/portfolio" data-aos="fade-right" class="md:hidden mt-4 mb-4 ">
+            <p>Explore</p> <i class="fa-sharp fa-solid fa-arrow-right-long fa-lg ps-2"></i>
+          </ActionButton>
+          <div class="flex items-center mt-5">
+            <RouterLink class="back-link mouse-md inline-block lg:hidden mr-5" to="/about">About<i
+              class="fa-sharp fa-solid fa-arrow-up-right fa-lg ps-2"></i></RouterLink>
+            <RouterLink class="back-link mouse-md lg:hidden" to="/contact">Contact<i
+              class="fa-sharp fa-solid fa-arrow-up-right fa-lg ps-2"></i></RouterLink>
             <!-- <RouterLink class="back-link mouse-md inline-block lg:hidden" to="/projects">Projects<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></RouterLink> -->
           </div>
           <StatusIndicator class="block lg:hidden mt-1 lg:mt-0 py-3"/>
