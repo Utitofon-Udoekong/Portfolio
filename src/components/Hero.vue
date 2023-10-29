@@ -3,8 +3,11 @@
 <script setup lang="ts">
 
 // Imports
+//@ts-ignore
 import {createShader, createProgram} from "@/shaders/shaderHelpers.js";
+//@ts-ignore
 import fragment from "@/shaders/hero/fragment.js";
+//@ts-ignore
 import vertex from "@/shaders/hero/vertex.js";
 import {gsap} from "gsap";
 import CodeLine from "./CodeLine.vue";
@@ -55,7 +58,8 @@ const initWebGLComponent = () => {
 
   // Set up the canvas and WebGL context
   const canvas = document.getElementById('hero-canvas');
-  gl = canvas.getContext('webgl');
+  //@ts-ignore
+  gl = canvas?.getContext('webgl');
   if (!gl) {
     return;
   }
@@ -88,7 +92,7 @@ const initWebGLComponent = () => {
 
   // Get the location of the initial X offset uniform
   locations.initialXOffset = gl.getUniformLocation(program, "iInitialXOffset");
-
+  //@ts-ignore
   // Get the location of the portfolio scroll percentage uniform
   locations.portfolioScrollPercentage = gl.getUniformLocation(program, "iPortfolioScrollPercentage");
 
@@ -147,6 +151,7 @@ const renderWebGLComponent = () => {
     // Pass the initial X offset uniform
     gl.uniform1f(locations.initialXOffset, initialXOffset.value);
 
+    //@ts-ignore
     // Pass the portfolio scroll percentage uniform
     gl.uniform1f(locations.portfolioScrollPercentage, portfolioScrollPercentage.value);
 

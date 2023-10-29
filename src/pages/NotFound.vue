@@ -11,7 +11,7 @@
               <span class="code--green">&nbsp;not</span>
               <span class="code--white">&nbsp;found</span>
             </CodeLine>
-            <h1 class="mb-5 lead">OMO;</h1>
+            <h1 class="mb-5 lead">HOLD UP;</h1>
             <p class="text-light mb-6">
               How did you get here 👀?<br><em>Let's go back.</em>
             </p>
@@ -34,9 +34,7 @@
   </template>
 
   <script setup lang="ts">
-    import ActionButton from "@/components/ActionButton.vue"
-    import CodeLine from "@/components/CodeLine.vue"
-    import Logo from "@/components/Logo.vue"
+   
 </script>
   
   <style lang="scss" scoped>
