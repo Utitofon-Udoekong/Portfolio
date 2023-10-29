@@ -197,9 +197,9 @@ function setupDraggable() {
           </div>
 
         </div>
-        <div class="relative">
+        <div class="relative hidden md:block">
           <!-- Pagination Controls -->
-          <div class="pagination pe-5 lg:pe-6 !hidden lg:flex" v-if="portfolioData">
+          <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
             <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
                @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
             <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
@@ -226,7 +226,7 @@ function setupDraggable() {
     </div>
 
 
-    <div id="bottom-bar" class="container-xxxl">
+    <div id="bottom-bar" class="container-xxxl px-8 md:px-16">
       <BottomBar/>
     </div>
 

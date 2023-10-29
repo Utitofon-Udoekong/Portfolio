@@ -29,9 +29,11 @@ onMounted(() => {
                   v-for="(char, index) in headingChars">{{ char }}
             </span>
           </h1>
-          <ActionButton to="/portfolio" data-aos="fade-right" class="md:hidden mt-4 mb-4 ">
+          <div class="md:hidden">
+            <ActionButton to="/portfolio" data-aos="fade-right" class="mt-4 mb-4 ">
             <p>Explore</p> <i class="fa-sharp fa-solid fa-arrow-right-long fa-lg ps-2"></i>
           </ActionButton>
+          </div>
           <div class="flex items-center mt-5">
             <RouterLink class="back-link mouse-md inline-block lg:hidden mr-5" to="/about">About<i
               class="fa-sharp fa-solid fa-arrow-up-right fa-lg ps-2"></i></RouterLink>

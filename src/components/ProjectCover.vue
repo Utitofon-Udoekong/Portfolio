@@ -8,7 +8,6 @@ interface Props{
 }
 
 const props = defineProps<Props>();
-const projectCover = ref(null)
 
 const currentPortfolioItem = toRef(props, 'portfolioItem');
 
@@ -16,24 +15,9 @@ const displayIndex = computed(() => {
   return props.index.toString().padStart(2, '0');
 });
 
-const container = ref(null);
 const { width, height } = useWindowSize();
 const { x, y } = useMouse();
 const parallaxOffset = 30;
-
-const {height: imageHeight} = useElementSize(projectCover)
-
-const getDurationFromHeight = () => {
-  if(imageHeight.value > 5000){
-    return 50
-  }else if(imageHeight.value > 3000){
-    return 40
-  }else if(imageHeight.value > 1000){
-    return 20
-  }else{
-    return 10
-  }
-}
 
 /**
  * Determine the inline styles to apply to the element
@@ -43,12 +27,6 @@ const elementStyle = computed(() => {
     'transform': `translate(${(((1 / width.value) * x.value) * parallaxOffset * -1)}px, ${(((1 / height.value) * y.value) * parallaxOffset * -1)}px)`,
   }
 });
-
-const projectCoverAnimationDuration = computed(() => {
-  console.log(imageHeight.value);
-  console.log(`${getDurationFromHeight()}s linear 1s infinite alternate backdrop-scroll`)
-  return `${getDurationFromHeight()}s linear 1s infinite alternate backdrop-scroll`
-})
 
 const elementClasses = computed(() => {
   return {
@@ -60,6 +38,7 @@ const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager
 const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
   const clientName = key.split('/')?.[5]
   const fileName = filename(key)
+  //@ts-ignore
   return [clientName+fileName,value.default]
 }))
 </script>
@@ -90,7 +69,7 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
     <RouterLink :to="path + currentPortfolioItem.slug">
       <div class="project-cover__video-container" >
         <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
-        <img class="project-cover__video mouse-md" :src="images[currentPortfolioItem.cover]" alt="" ref="projectCover">
+        <img class="project-cover__video mouse-md" :style="elementStyle" :src="images[currentPortfolioItem.cover]" alt="" ref="projectCover">
         <!-- <p>{{ images['zaga/cover'] }}</p> -->
       </div>
     </RouterLink>

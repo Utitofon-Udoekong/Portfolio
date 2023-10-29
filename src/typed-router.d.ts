@@ -43,7 +43,6 @@ declare module 'vue-router/auto/routes' {
     '/[...slug]': RouteRecordInfo<'/[...slug]', '/:slug(.*)', { slug: ParamValue<true> }, { slug: ParamValue<false> }>,
     '/About': RouteRecordInfo<'/About', '/About', Record<never, never>, Record<never, never>>,
     '/Contact': RouteRecordInfo<'/Contact', '/Contact', Record<never, never>, Record<never, never>>,
-    '/NotFound': RouteRecordInfo<'/NotFound', '/NotFound', Record<never, never>, Record<never, never>>,
     '/portfolio/': RouteRecordInfo<'/portfolio/', '/portfolio', Record<never, never>, Record<never, never>>,
     '/portfolio/[...slug]': RouteRecordInfo<'/portfolio/[...slug]', '/portfolio/:slug(.*)', { slug: ParamValue<true> }, { slug: ParamValue<false> }>,
     '/projects/': RouteRecordInfo<'/projects/', '/projects', Record<never, never>, Record<never, never>>,

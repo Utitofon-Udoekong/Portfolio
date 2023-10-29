@@ -11,10 +11,10 @@
             <span class="code--green">&nbsp;not</span>
             <span class="code--white">&nbsp;found</span>
           </CodeLine>
-          <h1 class="mb-5 lead">OH NO;</h1>
-          <p class="text-light mb-6">
-            Looks you've navigated to a broken link.<br><em>Try not doing that again in the future.</em>
-          </p>
+          <h1 class="mb-5 lead">HOLD UP;</h1>
+            <p class="text-light mb-6">
+              How did you get here 👀?<br><em>Let's go back.</em>
+            </p>
           <ActionButton to="/" data-aos="fade-up">
             <i class="fa-sharp fa-solid fa-arrow-up-left"></i>
             Back
