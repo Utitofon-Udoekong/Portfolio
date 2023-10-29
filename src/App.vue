@@ -49,7 +49,7 @@ useHead({
     {
       hid: 'og:image',
       name: 'og:image',
-      content: 'https://utitofon-udoekong.vercel.app/cover.jpg'
+      content: '/cover.png'
     },
     {
       hid: 'og:image:alt',
@@ -104,7 +104,7 @@ useHead({
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: 'https://utitofon-udoekong.vercel.app/cover.jpg'
+      content: '/cover.png'
     },
     {
       hid: 'twitter:image:alt',
@@ -113,7 +113,10 @@ useHead({
     }
   ],
   link: [
-    {rel: 'icon', type: 'image/svg', href: '/icon-notext.svg'},
+    {rel:"icon", type:"image/png", sizes:"32x32", href:"/favicon-32x32.png"},
+    {rel:"icon", type:"image/png", sizes:"16x16", href:"/favicon-16x16.png"},
+    {rel:"icon", href:"/favicon.ico"},
+    {rel:"manifest", href:"/site.webmanifest"},
     {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'},
   ],
   script: [
