@@ -54,6 +54,11 @@ const props = defineProps({
     margin-right: 10px;
     display: inline-block;
   }
+  :deep(svg){
+    pointer-events: none;
+    margin-right: 10px;
+    display: inline-block;
+  }
 }
 
 </style>

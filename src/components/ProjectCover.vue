@@ -48,9 +48,9 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
     :aria-description="currentPortfolioItem.lead">
 
     <!-- Title & Stack -->
-    <div class="title-bar flex justify-between items-end mb-3 flex-nowrap">
-      <div class="flex items-end">
-        <h2 class="lead pb-1 pe-3 d-inline-block mb-0 lg:ps-4 ps-0" style="color: #F2F2F2">{{ displayIndex }}.</h2>
+    <div class=" flex justify-between items-end mb-3 flex-nowrap">
+      <div class="flex flex-col md:flex-row md:items-end">
+        <h2 class="lead pb-1 pe-3 inline-block mb-0 lg:ps-4 ps-0" style="color: #F2F2F2">{{ displayIndex }}.</h2>
         <div class="inline-block">
           <span class="project-cover__type text-sm mb-0 block">{{ currentPortfolioItem.type }}</span>
           <h2 class="project-cover__title mb-0">{{ currentPortfolioItem.title }}</h2>
@@ -144,7 +144,7 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
   height: calc(100% + 60px);
   object-fit: cover;
   object-position: center top;
-  transform-origin: center bottom;
+  transform-origin: center center;
 }
 
 .project-cover--focused {

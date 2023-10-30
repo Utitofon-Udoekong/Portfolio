@@ -78,12 +78,13 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
 
 .project-cover__video-container {
   width: 100%;
-  height: calc(100vh - 380px);
+  height: calc(100vh - 300px);
   box-shadow: rgba(0, 0, 0, 0.3) 0 40px 10px -20px;
   border-radius: 5px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
+
 }
 
 .project-cover__video {
@@ -103,18 +104,6 @@ const images = Object.fromEntries(Object.entries(glob).map(([key, value]) => {
     opacity: 1;
     transition-delay: 0.2s;
   }
-  .project-cover__video{
-    animation: 10s linear 1s infinite alternate backdrop-scroll;
-  }
-
 }
 
-@keyframes backdrop-scroll {
-  from{
-    object-position: center top;
-  }
-  to{
-    object-position: center bottom;
-  }
-}
 </style>

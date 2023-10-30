@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import gsap from 'gsap'
+import {gsap} from "gsap";
+import {Draggable} from "gsap/Draggable";
 import { filename } from '@/utils/types';
 
 
@@ -10,7 +11,7 @@ const portfolioScrollPercentage = computed(() => 0);
 
 const currentPortfolioItem = computed(() => {
   //@ts-ignore
-  return portfolioData[portfolioData.findIndex(project => project.slug === route.params["slug"])];
+  return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"])];
 });
 
 const glob = import.meta.glob('@/assets/images/projects/**/*.{png,jpg}', { eager: true })
@@ -51,6 +52,26 @@ const portfolioItemWidth = computed(() => {
   });
 }
 
+/**
+ * Updates the selected project, called by drag and touch events
+ * @param event
+ */
+ const updateDragSelected = function (event: any) {
+  //@ts-ignore
+  let selectedIndex = Math.floor(Math.abs((this.endX) / portfolioItemWidth.value));
+  selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+  selectedIndex = selectedIndex > portfolioData.length - 1 ? portfolioData.length - 1 : selectedIndex;
+  selected.value = selectedIndex;
+  gsap.killTweensOf(portfolioScrollPercentage);
+  gsap.to(portfolioScrollPercentage, {
+    value: selected.value * (1 / portfolioData.length),
+    duration: 2,
+    ease: "power1.out"
+  });
+}
+
+let draggable: any = null;
+
 const paginateNext = () => {
   let newSelected = selected.value + 1;
   updateSelected(newSelected);
@@ -62,23 +83,66 @@ const paginatePrev = () => {
 }
 
 onMounted(() => {
-  //@ts-ignore
-  console.log(route.params["slug"])
-})
+
+  gsap.registerPlugin(Draggable);
+
+  setupDraggable();
+});
+onActivated(() => {
+  setupDraggable();
+});
+onUnmounted(() => {
+  if (draggable) {
+    draggable[0].kill();
+  }
+});
+
+function setupDraggable() {
+  if (draggable) {
+    return;
+  }
+  nextTick(() => {
+    const offsets = [];
+    for (let i = 0; i < portfolioData.length; i++) {
+      offsets.push((i * portfolioItemWidth.value) * -1);
+    }
+    const container = document.querySelector("#portfolio-feed");
+    if (!container) {
+      setTimeout(() => {
+        setupDraggable();
+      }, 100);
+      return;
+    }
+    draggable = Draggable.create(container, {
+      type: "x",
+      edgeResistance: 1,
+      snap: offsets,
+      inertia: true,
+      bounds: {
+        minX: 0,
+        maxX: portfolioItemWidth.value * (portfolioData.length - 1) * -1
+      },
+      //onDrag: updateDragSelected,
+      onDragEnd: updateDragSelected,
+      //allowNativeTouchScrolling: false,
+      zIndexBoost: false
+    });
+  });
+}
 
 useHead({
-  title: 'Case Study: ' + currentPortfolioItem.value['title'] + ', ' + currentPortfolioItem.value['type'] + ' | ' + 'Marchant Web',
+  title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Utitofon Udoekong',
   meta: [
-    { hid: 'description', name: 'description', content:  currentPortfolioItem.value['lead'] },
-    { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value['title'] },
+    { hid: 'description', name: 'description', content:  currentPortfolioItem.value.lead },
+    { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value.title },
     { hid: 'og:url', property: 'og:url', content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
-    { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value['lead'] },
+    { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value.lead },
     { hid: 'og:image', property: 'og:image', content: currentPortfolioItem.value['cover']},
 
     // twitter card
-    { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value['title'] },
+    { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value.title },
     { hid: "twitter:url", name: "twitter:url", content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
-    { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value['lead'] },
+    { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value.lead },
     { hid: "twitter:image", name: "twitter:image", content: currentPortfolioItem.value['cover']},
   ],
   link: [
@@ -92,20 +156,20 @@ useHead({
 </script>
 
 <template>
-  <section class="page">
+  <section class="absolute inset-0 py-8 md:py-16">
 
     <NavMenu/>
 
     <div class="container-xxxl">
 
-      <div class="flex flex-wrap mt-5">
+      <div class="flex flex-wrap mt-5 ">
         <div class="col-auto">
           <Logo :size="50" />
         </div>
       </div>
 
       <!-- Hero-->
-      <div class="flex flex-wrap mt-5 lg:mt-6">
+      <div class="flex flex-wrap mt-5 lg:mt-6 ">
         <div class="w-full lg:w-1/3">
           <CodeTag class="mb-2 lg:mb-3">{{ currentPortfolioItem.type }}</CodeTag>
           <h1 class="mb-3 lg:mb-10 project__name"> {{ currentPortfolioItem.title }} </h1>
@@ -117,7 +181,7 @@ useHead({
       </div>
 
       <div class="flex flex-wrap w-full mt-5 lg:mt-8 xl:mt-7 pb-3">
-        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0">
+        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0 px-8 md:px-16">
           <aside class="ps-0 lg:ps-6 mb-5 lg:mb-0" style="position: sticky; top: 60px">
             <h3 class="mb-5" data-aos="fade-up">Details</h3>
             <dl class="mb-5 block" data-aos="fade-up">
@@ -139,25 +203,26 @@ useHead({
 
             </dl>
             <LinkButton :to="currentPortfolioItem.address" data-aos="fade-up">
-              <i class="fa-sharp fa-regular fa-globe fa-lg"></i>
+              <PhGlobeLight/>
               View Project
             </LinkButton>
           </aside>
         </div>
 
         <main class="w-full lg:w-2/3 order-1 lg:order-2">
-          <div class="w-full lg:w-5/6 pr-4 pl-4 xl:w-4/5 mb-10">
+          <div class="w-full lg:w-5/6 xl:w-4/5 mb-10">
             <CodeLine :number="'//'" class="mb-5 lg:mb-4">
               <span class="code--yellow">npm</span>
               <span class="code--green">&nbsp;run</span>
               <span class="code--white">&nbsp;case_study</span>
             </CodeLine>
             <h1 class="mb-4 lg:mb-5" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
+            <p v-if="currentPortfolioItem.about">{{ currentPortfolioItem.about }}</p>
           </div>
 
           <!-- Image carousel -->
-          <div class="flex justify-between">
-            <div class="ms-6">
+          <div class="flex justify-between relative">
+            <div class="lg:ms-6">
               <CodeLine :number="'//'" class="mb-5 lg:mb-4">
                 <span class="code--yellow">npm</span>
                 <span class="code--green">&nbsp;run</span>
@@ -166,13 +231,13 @@ useHead({
               <PortfolioScrubber class="flex" :portfolioData="currentPortfolioItem.images" :selected="selected"
                                @updateSelected="updateSelected"/>
             </div>
-            <div class="col-auto relative">
+            <div class="relative hidden md:block">
               <!-- Pagination Controls -->
-              <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="currentPortfolioItem.images">
-                <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
-                  @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
-                <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
-                  @click.prevent="paginateNext" :class="{'disabled': selected === currentPortfolioItem.images.length - 1}"></i>
+              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
+                <SolarDoubleAltArrowLeftBold class="text-4xl pagination--prev mouse-md"
+                  @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
+                <SolarDoubleAltArrowRightBold class="text-4xl pagination--next mouse-md"
+                @click.prevent="paginateNext" :class="{ 'disabled': selected === portfolioData.length - 1 }"/>
               </div>
             </div>
           </div>

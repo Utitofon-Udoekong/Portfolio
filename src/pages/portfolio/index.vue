@@ -2,8 +2,8 @@
 
 <script setup lang="ts">
 
-import {gsap} from "gsap";
-import {Draggable} from "gsap/Draggable";
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
 
 const portfolioData = usePortfolio();
 const selected = ref(0);
@@ -20,7 +20,7 @@ useHead({
   ]
 });
 
-const {width} = useWindowSize();
+const { width } = useWindowSize();
 const portfolioItemWidth = computed(() => {
   if (width.value > 1680) {
     return 1040;
@@ -179,67 +179,67 @@ function setupDraggable() {
 </script>
 
 <template>
-  <section class="absolute inset-0 px-0 py-8 md:p-16">
+  <section class="page overflow-y-hidden">
 
-    <NavMenu/>
+    <NavMenu />
 
-    <div class="container-xxxl pt-4 lg:pt-6">
-      <div class="flex justify-between">
-        <div class="flex flex-row items-center px-8 md:px-16">
+    <div class="pt-6 lg:pt-16">
+      <div class="flex justify-between items-end">
+        <div class="flex flex-row items-center">
 
           <!-- Back to Home -->
-          <RouterLink class="back-link mouse-md" to="/"><i class="fa-sharp fa-solid fa-arrow-up-left fa-2x pe-3"></i>Home
+          <RouterLink class="back-link mouse-md" to="/"><OcticonArrowUpLeft16 class="text-3xl pe-3" />Home
           </RouterLink>
 
-          <div class="hidden lg:block ms-6">
+          <div class="hidden xl:block ms-6">
             <PortfolioScrubber class="flex" :portfolioData="portfolioData" :selected="selected"
-                             @updateSelected="updateSelected"/>
+              @updateSelected="updateSelected" />
           </div>
 
         </div>
         <div class="relative hidden md:block">
           <!-- Pagination Controls -->
           <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
-            <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
-               @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
-            <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
-               @click.prevent="paginateNext" :class="{'disabled': selected === portfolioData.length - 1}"></i>
+            <SolarDoubleAltArrowLeftBold class="text-4xl pagination--prev mouse-md"
+              @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
+            <SolarDoubleAltArrowRightBold class="text-4xl pagination--next mouse-md"
+            @click.prevent="paginateNext" :class="{ 'disabled': selected === portfolioData.length - 1 }"/>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="portfolio-feed-container" class="mt-5 lg:mt-6 px-0" style="overflow: hidden;">
-      <div id="portfolio-feed" class="feed-section" role="feed" aria-busy="false" aria-label="Case Studies"
-           v-if="portfolioData">
+    <div id="portfolio-feed-container" class="mt-8 lg:mt-12 px-0" style="overflow: hidden;">
+      <div id="portfolio-feed" class="feed-section" role="feed" aria-busy="false" aria-label="Case Studies">
 
-        <div class="feed-section__container-padding"/>
+        <template v-if="portfolioData">
+          <div class="feed-section__container-padding" />
 
-        <ProjectCover path="/portfolio/" :aria-posinset="index" :aria-setsize="portfolioData.length" :portfolioItem="portfolioItem"
-                      :index="index"
-                      v-for="(portfolioItem, index) in portfolioData" :isFocused="index === selected"/>
+          <ProjectCover path="/portfolio/" :aria-posinset="index" :aria-setsize="portfolioData.length"
+            :portfolioItem="portfolioItem" :index="index" v-for="(portfolioItem, index) in portfolioData"
+            :isFocused="index === selected" />
 
-        <div class="feed-section__extraElement"/>
+          <div class="feed-section__extraElement" />
 
-        <div class="feed-section__container-padding"/>
+          <div class="feed-section__container-padding" />
+        </template>
       </div>
     </div>
 
 
-    <div id="bottom-bar" class="container-xxxl px-8 md:px-16">
-      <BottomBar/>
+    <div id="bottom-bar" class="container-xxxl">
+      <BottomBar />
     </div>
 
-    <div class="block lg:hidden">
-      <PortfolioScrubber class="portfolio-links--mobile flex" :portfolioData="portfolioData"
-                       :selected="selected" @updateSelected="updateSelected"/>
+    <div class="block md:hidden">
+      <PortfolioScrubber class="portfolio-links--mobile flex" :portfolioData="portfolioData" :selected="selected"
+        @updateSelected="updateSelected" />
     </div>
 
   </section>
 </template>
 
 <style lang="scss" scoped>
-
 * {
   user-select: none;
   -webkit-user-select: none;
@@ -256,13 +256,11 @@ h1 {
   margin-left: 0;
   margin-right: 0;
   display: flex;
-  flex-direction: row;
   gap: 0;
   flex-wrap: nowrap;
   width: fit-content;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-bottom: 60px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -300,35 +298,34 @@ h1 {
   flex-direction: row;
   flex-wrap: nowrap;
   position: absolute;
-  top: 180px;
+  top: 150px;
   right: 0;
   z-index: 50;
   gap: 60px;
 
-  i {
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 
+  svg{
     &.disabled {
-      opacity: 0.2;
-      pointer-events: none;
-    }
+    opacity: 0.2;
+    pointer-events: none;
+  }
 
-    &.pagination--prev {
+  &.pagination--prev {
 
-      &:hover {
-        transform: translateX(-5px);
-      }
-    }
-
-    &.pagination--next {
-
-      &:hover {
-        transform: translateX(5px);
-      }
+    &:hover {
+      transform: translateX(-5px);
     }
   }
-}
 
+  &.pagination--next {
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+  }
+}
 </style>

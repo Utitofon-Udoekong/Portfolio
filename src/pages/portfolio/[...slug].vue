@@ -131,7 +131,7 @@ function setupDraggable() {
 }
 
 useHead({
-  title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Marchant Web',
+  title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Utitofon Udoekong',
   meta: [
     { hid: 'description', name: 'description', content:  currentPortfolioItem.value.lead },
     { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value.title },
@@ -162,14 +162,14 @@ useHead({
 
     <div class="container-xxxl">
 
-      <div class="flex flex-wrap mt-5 px-8 md:px-16">
+      <div class="flex flex-wrap mt-5 ">
         <div class="col-auto">
           <Logo :size="50" />
         </div>
       </div>
 
       <!-- Hero-->
-      <div class="flex flex-wrap mt-5 lg:mt-6 px-8 md:px-16">
+      <div class="flex flex-wrap mt-5 lg:mt-6 ">
         <div class="w-full lg:w-1/3">
           <CodeTag class="mb-2 lg:mb-3">{{ currentPortfolioItem.type }}</CodeTag>
           <h1 class="mb-3 lg:mb-10 project__name"> {{ currentPortfolioItem.title }} </h1>
@@ -203,14 +203,14 @@ useHead({
 
             </dl>
             <LinkButton :to="currentPortfolioItem.address" data-aos="fade-up">
-              <i class="fa-sharp fa-regular fa-globe fa-lg"></i>
+              <PhGlobeLight/>
               View Project
             </LinkButton>
           </aside>
         </div>
 
         <main class="w-full lg:w-2/3 order-1 lg:order-2">
-          <div class="w-full lg:w-5/6 xl:w-4/5 mb-10 px-8 md:px-16">
+          <div class="w-full lg:w-5/6 xl:w-4/5 mb-10">
             <CodeLine :number="'//'" class="mb-5 lg:mb-4">
               <span class="code--yellow">npm</span>
               <span class="code--green">&nbsp;run</span>
@@ -221,7 +221,7 @@ useHead({
           </div>
 
           <!-- Image carousel -->
-          <div class="flex justify-between relative px-8 md:px-16">
+          <div class="flex justify-between relative">
             <div class="lg:ms-6">
               <CodeLine :number="'//'" class="mb-5 lg:mb-4">
                 <span class="code--yellow">npm</span>
@@ -233,11 +233,11 @@ useHead({
             </div>
             <div class="relative hidden md:block">
               <!-- Pagination Controls -->
-              <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="currentPortfolioItem.images">
-                <i class="fa-sharp fa-regular fa-arrow-left-long fa-3x pagination--prev mouse-md"
-                  @click.prevent="paginatePrev" :class="{'disabled': selected === 0}"></i>
-                <i class="fa-sharp fa-regular fa-arrow-right-long fa-3x pagination--next mouse-md"
-                  @click.prevent="paginateNext" :class="{'disabled': selected === currentPortfolioItem.images.length - 1}"></i>
+              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
+                <SolarDoubleAltArrowLeftBold class="text-4xl pagination--prev mouse-md"
+                  @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
+                <SolarDoubleAltArrowRightBold class="text-4xl pagination--next mouse-md"
+                @click.prevent="paginateNext" :class="{ 'disabled': selected === portfolioData.length - 1 }"/>
               </div>
             </div>
           </div>
