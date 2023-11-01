@@ -257,7 +257,7 @@ useHead({
               <div class="feed-section__container-padding"/>
             </div>
           </div>
-          <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Marchant Web, LLC. All rights reserved.</p>
+          <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Utitofon Udoekong, LLC. All rights reserved.</p>
         </main>
       </div>
 
