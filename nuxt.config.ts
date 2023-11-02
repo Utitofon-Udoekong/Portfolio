@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     }
   },
-  css: ["@/assets/main.css"],
+  css: ["@/assets/scss/main.scss"],
   devtools: {
     enabled: true, 
     timeline: {
