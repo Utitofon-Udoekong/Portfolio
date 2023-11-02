@@ -132,12 +132,12 @@ export const projects: Project[] = [
         role: "Lead Developer",
         lead: "Delight your taste buds with our online restaurant, serving satisfaction on every plate.",
         images: [
-            "chop-life/1.png",
-            "chop-life/2.png",
-            "chop-life/3.png",
-            "chop-life/4.png",
-            "chop-life/5.png",
-            "chop-life/6.png",
+            "chop-life/1.jpg",
+            "chop-life/2.jpg",
+            "chop-life/3.jpg",
+            "chop-life/4.jpg",
+            "chop-life/5.jpg",
+            "chop-life/6.jpg",
         ]
     },
    
