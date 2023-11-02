@@ -166,8 +166,7 @@ useHead({
           <NuxtLink class="back-link mouse-md mb-5 lg:mb-0" to="/projects"><Icon name="fluent:arrow-up-left-16-filled" size="2.5rem" class="pe-3" />Back to Explore Projects</NuxtLink>
         </div>
         <div class="relative flex-grow max-w-full flex-1">
-          <ImageGlob :src="currentPortfolioItem.cover" class="mouse-md project__cover-image" data-aos="zoom-in-down"/>
-          <!-- <ImageGlob :src="currentPortfolioItem.cover" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="" /> -->
+          <ImageGlob :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down"/>
         </div>
       </div>
 
@@ -228,11 +227,11 @@ useHead({
             </div>
             <div class="relative hidden md:block">
               <!-- Pagination Controls -->
-              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
+              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="currentPortfolioItem.images.length">
                 <Icon name="solar:double-alt-arrow-left-bold" class="text-4xl pagination--prev mouse-md"
               @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
             <Icon name="solar:double-alt-arrow-right-bold" class="text-4xl pagination--next mouse-md"
-            @click.prevent="paginateNext" :class="{ 'disabled': selected === portfolioData.length - 1 }"/>
+            @click.prevent="paginateNext" :class="{ 'disabled': selected === currentPortfolioItem.images.length - 1 }"/>
               </div>
             </div>
           </div>

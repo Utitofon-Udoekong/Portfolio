@@ -65,14 +65,14 @@ const elementClasses = computed(() => {
         <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
         <ImageGlob
           class="project-cover__video mouse-md" :style="elementStyle"
-          :src="currentPortfolioItem.cover"
+          :src="currentPortfolioItem.images[0]"
         />
       </div>
     </NuxtLink>
 
     <!-- Lead Text (Mobile)  -->
     <h3 class="project-cover__lead block lg:hidden mt-4">
-      {{ currentPortfolioItem['lead'] }}
+      {{ currentPortfolioItem.lead }}
     </h3>
 
   </article>

@@ -14,11 +14,11 @@ useHead({
 
 </script>
 <template>
-  <section class="page overflow-x-hidden">
+  <section class="page">
 
-    <div class="max-w-2xl">
+    <div class="container-xxxl">
       <div class="flex mt-0 lg:mt-6">
-        <main class="" itemscope itemtype="https://schema.org/Person">
+        <main class="flex flex-col max-w-full md:max-w-[calc(100%-40vw)] " itemscope itemtype="https://schema.org/Person">
           <div class="mb-4">
             <NuxtLink class="back-link mouse-md mt-4 lg:mt-0 mb-5 lg:mb-0 d-block text-end text-md-start" to="/">
               Back<Icon name="ph:arrow-up-right-bold" size="2em" class="ps-3"/> 
@@ -79,7 +79,7 @@ useHead({
             </div>
           </div>
           <div class="mb-4 lg:mb-8">
-            <h3 class="mt-5 mb-4">Freelancing</h3>
+            <h3 class="mt-5 mb-4">Software Development</h3>
             <p>
               <strong>I specialize in expert development of mobile applications, desktop applications, and full stack programming for agencies that are
                 building cutting-edge web and mobile experiences for their clients.</strong> From solo work to supporting your team

@@ -179,11 +179,11 @@ function setupDraggable() {
 </script>
 
 <template>
-  <section class="page overflow-y-hidden">
+  <section class="page">
 
     <NavMenu />
 
-    <div class="pt-6 lg:pt-16">
+    <div class="container-xxxl pt-6 lg:pt-16">
       <div class="flex justify-between items-end">
         <div class="flex flex-row items-center">
 

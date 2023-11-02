@@ -9,8 +9,6 @@
         <li>Flutter</li>
         <li>Vue</li>
         <li>Nuxt</li>
-        <!-- <li>Electron</li> -->
-        <li>WebGL</li>
       </ul>
     </div>
     <div class="mb-3 flex items-center">

@@ -127,13 +127,13 @@ useHead({
     { hid: 'og:title', property: 'og:title', content: currentPortfolioItem.value.title },
     { hid: 'og:url', property: 'og:url', content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
     { hid: 'og:description', property: 'og:description', content: currentPortfolioItem.value.lead },
-    { hid: 'og:image', property: 'og:image', content: currentPortfolioItem.value['cover']},
+    { hid: 'og:image', property: 'og:image', content: currentPortfolioItem.value.images[0]},
 
     // twitter card
     { hid: "twitter:title", name: "twitter:title", content: currentPortfolioItem.value.title },
     { hid: "twitter:url", name: "twitter:url", content: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
     { hid: 'twitter:description', name: 'twitter:description', content: currentPortfolioItem.value.lead },
-    { hid: "twitter:image", name: "twitter:image", content: currentPortfolioItem.value['cover']},
+    { hid: "twitter:image", name: "twitter:image", content: currentPortfolioItem.value.cover},
   ],
   link: [
     { hid: "canonical", rel: "canonical", href: 'https://utitofon-udoekong.vercel.app' + route.fullPath },
@@ -166,7 +166,7 @@ useHead({
           <NuxtLink class="back-link mouse-md mb-5 lg:mb-0" to="/portfolio"><Icon name="fluent:arrow-up-left-16-filled" size="2.5rem" class="pe-3" />Back to Explore Projects</NuxtLink>
         </div>
         <div class="relative flex-grow max-w-full flex-1">
-          <ImageGlob :src="currentPortfolioItem.cover" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="" />
+          <ImageGlob :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="" />
         </div>
       </div>
 
@@ -206,8 +206,8 @@ useHead({
               <span class="code--green">&nbsp;run</span>
               <span class="code--white">&nbsp;case_study</span>
             </CodeLine>
-            <h1 class="mb-4 lg:mb-5" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
-            <p v-if="currentPortfolioItem.about">{{ currentPortfolioItem.about }}</p>
+            <h1 class="mb-4 lg:mb-5 text-xl md:text-3xl" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
+            <p v-if="currentPortfolioItem.about" data-aos="fade-up">{{ currentPortfolioItem.about }}</p>
           </div>
 
           <!-- Image carousel -->
@@ -223,11 +223,11 @@ useHead({
             </div>
             <div class="relative hidden md:block">
               <!-- Pagination Controls -->
-              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="portfolioData">
+              <div class="pagination pe-5 lg:pe-6 lg:flex" v-if="currentPortfolioItem.images.length">
                 <Icon name="solar:double-alt-arrow-left-bold" class="text-4xl pagination--prev mouse-md"
               @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
             <Icon name="solar:double-alt-arrow-right-bold" class="text-4xl pagination--next mouse-md"
-            @click.prevent="paginateNext" :class="{ 'disabled': selected === portfolioData.length - 1 }"/>
+            @click.prevent="paginateNext" :class="{ 'disabled': selected === currentPortfolioItem.images.length - 1 }"/>
               </div>
             </div>
           </div>

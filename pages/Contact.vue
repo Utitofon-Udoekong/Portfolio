@@ -20,7 +20,7 @@ useHead({
 
     <div class="container-xxxl">
       <div class="flex flex-wrap mt-0 lg:mt-6 justify-end">
-        <div class="w-full md:w-2/3 lg:w-3/5 xl:w-2/5 mb-4">
+        <div class=" max-w-full md:max-w-[calc(100%-40vw)]  mb-4">
           <NuxtLink class="back-link !text-white mouse-md mt-4 lg:mt-0" to="/"><Icon name="ph:arrow-up-left-bold" size="2em" class="pe-3"/> Back
           </NuxtLink>
           <CodeTag class="mt-5 mb-3">contact</CodeTag>
