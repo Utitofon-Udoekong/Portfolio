@@ -12,6 +12,7 @@ export interface Project {
     role: string;
     lead: string;
     about?: string;
+    process?: string;
     images: string[];
 }
 

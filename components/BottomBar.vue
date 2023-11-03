@@ -12,15 +12,15 @@
       </ul>
     </div>
     <div class="mb-3 flex items-center">
-      <a href="https://twitter.com/UtitofonUdoeko1" target="_blank" class="mr-4 " aria-label="Find me on Twitter">
-        <Icon name="fa6-brands:x-twitter" class="text-sm twitter-icon mouse-sm hidden md:inline " title="Find me on X(Twitter)"/>
-      </a>
-      <a href="https://github.com/Utitofon-Udoekong" target="_blank" class="mr-6" aria-label="View this site on GitHub">
-        <Icon name="bi:github" class="text-sm github-icon mouse-sm hidden md:inline " title="Find me on Github"/>
-      </a>
-      <a href="https://www.linkedin.com/in/utitofon-udoekong" target="_blank" class="mr-6" aria-label="View this site on GitHub">
-        <Icon name="bi:linkedin" class="text-sm github-icon mouse-sm hidden md:inline " title="Find me on Linkedin"/>
-      </a>
+      <NuxtLink href="https://twitter.com/UtitofonUdoeko1" :external="true" target="_blank" class="mr-4 " aria-label="Find me on Twitter">
+        <Icon name="fa6-brands:x-twitter" class="text-lg twitter-icon mouse-sm hidden md:inline " title="Find me on X(Twitter)"/>
+      </NuxtLink>
+      <NuxtLink href="https://github.com/Utitofon-Udoekong" :external="true" target="_blank" class="mr-6" aria-label="View this site on GitHub">
+        <Icon name="bi:github" class="text-lg github-icon mouse-sm hidden md:inline " title="Find me on Github"/>
+      </NuxtLink>
+      <NuxtLink href="https://www.linkedin.com/in/utitofon-udoekong" :external="true" target="_blank" class="mr-6" aria-label="View this site on GitHub">
+        <Icon name="bi:linkedin" class="text-lg github-icon mouse-sm hidden md:inline " title="Find me on Linkedin"/>
+      </NuxtLink>
       <StatusIndicator class="hidden lg:block"/>
     </div>
   </div>

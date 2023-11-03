@@ -8,9 +8,9 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/scss/main.scss"],
   devtools: {
-    enabled: true, 
+    enabled: false, 
     timeline: {
-      enabled: true
+      enabled: false
     }
   },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-icon", "@nuxt/image"]

@@ -166,7 +166,7 @@ useHead({
           <NuxtLink class="back-link mouse-md mb-5 lg:mb-0" to="/projects"><Icon name="fluent:arrow-up-left-16-filled" size="2.5rem" class="pe-3" />Back to Explore Projects</NuxtLink>
         </div>
         <div class="relative flex-grow max-w-full flex-1">
-          <ImageGlob :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down"/>
+          <NuxtImg :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down"/>
         </div>
       </div>
 

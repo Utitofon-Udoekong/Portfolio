@@ -43,7 +43,7 @@ const elementClasses = computed(() => {
     :aria-description="currentPortfolioItem.lead">
     <!-- Cover -->
     <div class="project-cover__video-container" >
-      <ImageGlob class="project-cover__video mouse-md" :src="currentPortfolioItem.images[index]" alt="" />
+      <NuxtImg class="project-cover__video mouse-md" :src="currentPortfolioItem.images[index]" alt="" />
     </div>
   </article>
 </template>

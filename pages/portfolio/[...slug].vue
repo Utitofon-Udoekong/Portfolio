@@ -166,7 +166,7 @@ useHead({
           <NuxtLink class="back-link mouse-md mb-5 lg:mb-0" to="/portfolio"><Icon name="fluent:arrow-up-left-16-filled" size="2.5rem" class="pe-3" />Back to Explore Projects</NuxtLink>
         </div>
         <div class="relative flex-grow max-w-full flex-1">
-          <ImageGlob :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="" />
+          <NuxtImg :src="currentPortfolioItem.images[0]" class="mouse-md project__cover-image" data-aos="zoom-in-down" alt="" />
         </div>
       </div>
 
@@ -206,8 +206,10 @@ useHead({
               <span class="code--green">&nbsp;run</span>
               <span class="code--white">&nbsp;case_study</span>
             </CodeLine>
-            <h1 class="mb-4 lg:mb-5 text-xl md:text-3xl" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
-            <p v-if="currentPortfolioItem.about" data-aos="fade-up">{{ currentPortfolioItem.about }}</p>
+            <h1 class="mb-4 lg:mb-5 text-xl md:text-3xl font-semibold" data-aos="fade-up">{{ currentPortfolioItem.lead}}</h1>
+            <p v-if="currentPortfolioItem.about" class="mb-4" data-aos="fade-up">{{ currentPortfolioItem.about }}</p>
+            <h1 v-if="currentPortfolioItem.process" class="mb-4 lg:mb-5 text-xl md:text-3xl font-semibold" data-aos="fade-up">Development Process</h1>
+            <p v-if="currentPortfolioItem.process" data-aos="fade-up" v-html="currentPortfolioItem.process"></p>
           </div>
 
           <!-- Image carousel -->

@@ -59,22 +59,22 @@ useHead({
           <div class="">
             <div class="client-logo__container">
               <div class="client-logo">
-                <img src="~/assets/images/clients/anythinghq.png" alt="AnythingHQ logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/anythinghq.png" alt="AnythingHQ logo" class="mouse-md h-10" />
               </div>
               <div class="client-logo">
-                <img src="~/assets/images/clients/pearl.png" alt="Pearl Muslimah logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/pearl.png" alt="Pearl Muslimah logo" class="mouse-md h-10" />
               </div>
               <div class="client-logo">
-                <img src="~/assets/images/clients/mocx.png" alt="Mocx logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/mocx.png" alt="Mocx logo" class="mouse-md h-10" />
               </div>
               <div class="client-logo">
-                <img src="~/assets/images/clients/eduma.png" alt="EAcadamy by Kazen logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/eduma.png" alt="EAcadamy by Kazen logo" class="mouse-md h-10" />
               </div>
               <div class="client-logo">
-                <img src="~/assets/images/clients/fortfolio.png" alt="Fortfolio logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/fortfolio.png" alt="Fortfolio logo" class="mouse-md h-10" />
               </div>
               <div class="client-logo">
-                <img src="~/assets/images/clients/trail.png" alt="Trailblazers logo" class="mouse-md h-10" />
+                <NuxtImg src="/images/clients/trail.png" alt="Trailblazers logo" class="mouse-md h-10" />
               </div>
             </div>
           </div>

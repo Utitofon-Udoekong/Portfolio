@@ -63,7 +63,7 @@ const elementClasses = computed(() => {
     <NuxtLink :to="path + currentPortfolioItem.slug">
       <div class="project-cover__video-container" >
         <i class="fa-sharp fa-regular fa-arrow-up-right fa-3x open-arrow" ></i>
-        <ImageGlob
+        <NuxtImg
           class="project-cover__video mouse-md" :style="elementStyle"
           :src="currentPortfolioItem.images[0]"
         />

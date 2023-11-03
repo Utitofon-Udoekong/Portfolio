@@ -1,5 +1,9 @@
 export default {
-    scrollBehavior() {
-        return { top: 0 }
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { top: 0, behavior: 'smooth', }
+        }
     },
 }

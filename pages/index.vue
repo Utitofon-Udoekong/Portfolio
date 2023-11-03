@@ -37,9 +37,9 @@ onMounted(() => {
           </div>
           <div class="flex items-center mt-5">
             <NuxtLink class="back-link mouse-md inline-block lg:hidden mr-5" to="/about">About
-              <Icon name="ph:arrow-up-right-bold" class="ps-2" size="1.125rem"/>
+              <Icon name="ph:arrow-up-right-bold" class="ps-2" size="2rem"/>
             </NuxtLink>
-            <NuxtLink class="back-link mouse-md lg:hidden" to="/contact">Contact<Icon name="ph:arrow-up-right-bold" class="ps-2" size="1.125rem"/></NuxtLink>
+            <NuxtLink class="back-link mouse-md lg:hidden" to="/contact">Contact<Icon name="ph:arrow-up-right-bold" class="ps-2" size="2rem"/></NuxtLink>
             <!-- <NuxtLink class="back-link mouse-md inline-block lg:hidden" to="/projects">Projects<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M204 64v104a12 12 0 0 1-24 0V93L72.49 200.49a12 12 0 0 1-17-17L163 76H88a12 12 0 0 1 0-24h104a12 12 0 0 1 12 12Z"/></svg></NuxtLink> -->
           </div>
           <StatusIndicator class="block lg:hidden mt-1 lg:mt-0 py-3"/>
