@@ -42,7 +42,7 @@ const elementClasses = computed(() => {
     :aria-description="currentPortfolioItem.lead">
 
     <!-- Title & Stack -->
-    <div class=" flex justify-between items-end mb-3 flex-nowrap">
+    <div class="title-bar flex justify-between items-end mb-3 flex-nowrap">
       <div class="flex flex-col md:flex-row md:items-end">
         <h2 class="lead pb-1 pe-3 inline-block mb-0 lg:ps-4 ps-0" style="color: #F2F2F2">{{ displayIndex }}.</h2>
         <div class="inline-block">

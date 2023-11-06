@@ -51,13 +51,26 @@ const elementClasses = computed(() => {
 <style lang="scss" scoped>
 .project-cover {
   position: relative;
-  width: 500px;
+  width: calc(1040px * 2/3);
   aspect-ratio: 2;
   flex: none;
   transform: scale(0.6);
   transform-origin: bottom center;
   transition: scale 0.6s cubic-bezier(0.6, 0, 0.2, 1);
-  @media screen and (max-width: 768px) {
+
+  @media screen and (max-width: 1680px) {
+    width: calc(960px * 2/3);
+  }
+
+  @media screen and (max-width: 1400px) {
+    width: calc(800px * 2/3);
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: calc(700px * 2/3);
+  }
+
+  @media screen and (max-width: 992px) {
     width: calc(100vw - 60px);
     transform: scale(0.8);
   }
@@ -72,7 +85,7 @@ const elementClasses = computed(() => {
 
 .project-cover__video-container {
   width: 100%;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 380px);
   box-shadow: rgba(0, 0, 0, 0.3) 0 40px 10px -20px;
   border-radius: 5px;
   cursor: pointer;

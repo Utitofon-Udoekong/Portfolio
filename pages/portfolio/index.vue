@@ -199,7 +199,7 @@ function setupDraggable() {
         </div>
         <div class="relative ">
           <!-- Pagination Controls -->
-          <div class="pagination pe-5 lg:pe-6 hidden lg:flex" v-if="portfolioData">
+          <div class="pagination pe-5 lg:pe-6 " v-if="portfolioData">
             <Icon name="solar:double-alt-arrow-left-bold" class="text-4xl pagination--prev mouse-md"
               @click.prevent="paginatePrev" :class="{ 'disabled': selected === 0 }"/>
             <Icon name="solar:double-alt-arrow-right-bold" class="text-4xl pagination--next mouse-md"
@@ -298,7 +298,7 @@ h1 {
   flex-direction: row;
   flex-wrap: nowrap;
   position: absolute;
-  top: 150px;
+  top: 180px;
   right: 0;
   z-index: 50;
   gap: 60px;
@@ -307,25 +307,29 @@ h1 {
   cursor: pointer;
   transition: transform 0.3s ease;
 
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+
   svg{
     &.disabled {
-    opacity: 0.2;
-    pointer-events: none;
-  }
-
-  &.pagination--prev {
-
-    &:hover {
-      transform: translateX(-5px);
+      opacity: 0.2;
+      pointer-events: none;
     }
-  }
 
-  &.pagination--next {
+    &.pagination--prev {
 
-    &:hover {
-      transform: translateX(5px);
+      &:hover {
+        transform: translateX(-5px);
+      }
     }
-  }
+
+    &.pagination--next {
+
+      &:hover {
+        transform: translateX(5px);
+      }
+    }
   }
 }
 </style>

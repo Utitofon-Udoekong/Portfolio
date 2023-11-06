@@ -1,21 +1,30 @@
 <script setup lang="ts">
 import {gsap} from "gsap";
-import {Draggable} from "gsap/Draggable";
+import {ScrollTrigger} from "gsap/ScrollTrigger"
 
-
+const divisor = 2/3
 const route = useRoute();
 const portfolioData = usePortfolio();
 const selected = ref(0);
-const portfolioScrollPercentage = computed(() => 0);
-
+const portfolioScrollPercentage = useState('portfolioScrollPercentage', () => 0);
+const carousel = ref()
 const currentPortfolioItem = computed(() => {
   return portfolioData[portfolioData.findIndex(project => project["slug"] === route.params["slug"][0])];
 });
 
 const {width, height} = useWindowSize();
 const portfolioItemWidth = computed(() => {
-  if (width.value > 768) {
-    return 500;
+  if (width.value > 1680) {
+    return 1040 * divisor;
+  }
+  if (width.value > 1400) {
+    return 960 * divisor;
+  }
+  if (width.value > 1200) {
+    return 800 * divisor;
+  }
+  if (width.value > 992) {
+    return 700 * divisor;
   }
   return width.value - 60;
 });
@@ -24,12 +33,13 @@ const portfolioItemWidth = computed(() => {
  * Update the selected project, called by wheel and key events
  * @param selectedIndex
  */
- const updateSelected = (selectedIndex: number) => {
+const updateSelected = (selectedIndex: number) => {
   selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
   selectedIndex = selectedIndex > currentPortfolioItem.value.images.length - 1 ? currentPortfolioItem.value.images.length - 1 : selectedIndex;
   selected.value = selectedIndex;
   gsap.killTweensOf("#portfolio-feed");
   gsap.to("#portfolio-feed", {
+    scrollTrigger: "#portfolio-feed",
     x: portfolioItemWidth.value * selected.value * -1,
     duration: 0.5,
     ease: "power3.out"
@@ -42,25 +52,25 @@ const portfolioItemWidth = computed(() => {
   });
 }
 
+let scrollTrigger: any = null;
+
 /**
- * Updates the selected project, called by drag and touch events
+ * Handle wheel events as portfolio scrolling, but push back against touchpads
  * @param event
  */
- const updateDragSelected = function (event: any) {
-  //@ts-ignore
-  let selectedIndex = Math.floor(Math.abs((this.endX) / portfolioItemWidth.value));
-  selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-  selectedIndex = selectedIndex > portfolioData.length - 1 ? portfolioData.length - 1 : selectedIndex;
-  selected.value = selectedIndex;
-  gsap.killTweensOf(portfolioScrollPercentage);
-  gsap.to(portfolioScrollPercentage, {
-    value: selected.value * (1 / portfolioData.length),
-    duration: 2,
-    ease: "power1.out"
-  });
+ const wheelHandler = (event: any) => {
+  const isTouchPad = event["wheelDeltaY"] ? event["wheelDeltaY"] === -3 * event.deltaY : event.deltaMode === 0;
+  if (!isTouchPad) {
+    let newSelected = selected.value;
+    if (event.deltaY > 0) {
+      newSelected += 1
+    } else {
+      newSelected -= 1
+    }
+    updateSelected(newSelected);
+  }
 }
 
-let draggable: any = null;
 
 const paginateNext = () => {
   let newSelected = selected.value + 1;
@@ -73,49 +83,63 @@ const paginatePrev = () => {
 }
 
 onMounted(() => {
-
-  gsap.registerPlugin(Draggable);
-
-  setupDraggable();
+  gsap.registerPlugin(ScrollTrigger)
+  setupScrollTrigger();
 });
+
 onActivated(() => {
-  setupDraggable();
+  setupScrollTrigger();
 });
 onUnmounted(() => {
-  if (draggable) {
-    draggable[0].kill();
+  if (scrollTrigger) {
+    scrollTrigger[0].kill();
   }
 });
 
-function setupDraggable() {
-  if (draggable) {
+function setupScrollTrigger() {
+  if (scrollTrigger) {
     return;
   }
   nextTick(() => {
     const offsets = [];
-    for (let i = 0; i < portfolioData.length; i++) {
+    for (let i = 0; i < currentPortfolioItem.value.images.length; i++) {
       offsets.push((i * portfolioItemWidth.value) * -1);
     }
     const container = document.querySelector("#portfolio-feed");
     if (!container) {
       setTimeout(() => {
-        setupDraggable();
+        setupScrollTrigger();
       }, 100);
       return;
     }
-    draggable = Draggable.create(container, {
-      type: "x",
-      edgeResistance: 1,
-      snap: offsets,
-      inertia: true,
-      bounds: {
-        minX: 0,
-        maxX: portfolioItemWidth.value * (portfolioData.length - 1) * -1
+    scrollTrigger = ScrollTrigger.create({
+      trigger: "#portfolio-feed",
+      pin: true,
+      // scrub: true,
+      // horizontal: true,
+      start: "bottom bottom+=5px",
+      end: portfolioItemWidth.value * currentPortfolioItem.value.images.length,
+      // snap: offsets,
+      onToggle: (self) => console.log("toggled, isActive:", self.isActive),
+      onUpdate: (self) => {
+        let newSelected = selected.value;
+        if (self.isActive) {
+          if(self.direction > 0){
+            newSelected += 1
+          }else{
+            newSelected -= 1
+          }
+          updateSelected(newSelected);
+        } 
+        console.log(
+          "progress:",
+          self.progress.toFixed(3),
+          "direction:",
+          self.direction,
+          "velocity",
+          self.getVelocity()
+        );
       },
-      //onDrag: updateDragSelected,
-      onDragEnd: updateDragSelected,
-      //allowNativeTouchScrolling: false,
-      zIndexBoost: false
     });
   });
 }
@@ -234,11 +258,11 @@ useHead({
             </div>
           </div>
 
-          <div id="portfolio-feed-container" class="mt-5 lg:mt-6 px-0" style="overflow: hidden;">
-            <div id="portfolio-feed" class="feed-section" role="feed" aria-busy="false" aria-label="Case Studies"
+          <div id="portfolio-feed-container" class="mt-5 lg:mt-6 px-0" style="overflow: hidden;" ref="carousel">
+            <div id="portfolio-feed" class="feed-section border " role="feed" aria-busy="false" aria-label="Case Studies"
                 v-if="currentPortfolioItem.images">
 
-              <div class="feed-section__container-padding"/>
+              <div class="showcase-feed-section__container-padding"/>
 
               <ProjectItemCover :aria-posinset="index" :aria-setsize="currentPortfolioItem.images.length" :portfolioItem="currentPortfolioItem"
                             :index="index"
@@ -246,7 +270,7 @@ useHead({
 
               <div class="feed-section__extraElement"/>
 
-              <div class="feed-section__container-padding"/>
+              <div class="showcase-feed-section__container-padding"/>
             </div>
           </div>
           <p class="mt-7 xl:mt-8 text-small text-end copyright hidden lg:block">Copyright © {{new Date().getFullYear()}} Utitofon Udoekong, LLC. All rights reserved.</p>
@@ -263,7 +287,6 @@ useHead({
 h1.project__name {
   color: #F2F2F2;
 }
-
 .project__cover-image {
   width: 100%;
   aspect-ratio: 2;
@@ -281,7 +304,16 @@ p:not(.copyright) {
   width: 700px;
   max-width: 100%;
 }
-
+.showcase-feed-section__container-padding {
+  width: calc(((100vw - 500px) / 2) + (60px * 0.5));
+  height: 10px;
+  display: block;
+  flex: none;
+  @media screen and (max-width: 1680px) {
+    width: 30px;
+  }
+  
+}
 .copyright{
   opacity: 0.5;
   font-size: 12px;
@@ -318,21 +350,21 @@ p:not(.copyright) {
 }
 
 .feed-section__extraElement {
-  width: 200px;
+  width: calc(200px * 2/3);
   height: 10px;
   display: block;
   flex: none;
 
   @media screen and (max-width: 1680px) {
-    width: 960px;
+    width: calc(960px * 2/3);
   }
 
   @media screen and (max-width: 1400px) {
-    width: 800px;
+    width: calc(800px * 2/3);
   }
 
   @media screen and (max-width: 1200px) {
-    width: 700px;
+    width: calc(700px * 2/3);
   }
 
 }
