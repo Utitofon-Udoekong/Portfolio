@@ -71,7 +71,7 @@ const elementClasses = computed(() => {
   }
 
   @media screen and (max-width: 992px) {
-    width: calc(100vw - 60px);
+    width: calc(100vw - 30px);
     transform: scale(0.8);
   }
 }

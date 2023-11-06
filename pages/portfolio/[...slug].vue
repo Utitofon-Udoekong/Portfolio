@@ -114,7 +114,7 @@ useHead({
       </div>
 
       <div class="flex flex-wrap w-full mt-5 lg:mt-8 xl:mt-7 pb-3">
-        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0 px-8 md:px-16">
+        <div class="w-full lg:w-1/3 order-2 lg:order-1 pt-6 lg:pt-0">
           <aside class="ps-0 lg:ps-6 mb-5 lg:mb-0" style="position: sticky; top: 60px">
             <h3 class="mb-5" data-aos="fade-up">Details</h3>
             <dl class="mb-5 block" data-aos="fade-up">
@@ -178,7 +178,7 @@ useHead({
           </div>
 
           <div id="portfolio-feed-container" class="mt-5 lg:mt-6 px-0" style="overflow: hidden;" ref="carousel">
-            <div id="portfolio-feed" class="feed-section border " role="feed" aria-busy="false" aria-label="Case Studies"
+            <div id="portfolio-feed" class="feed-section " role="feed" aria-busy="false" aria-label="Case Studies"
                 v-if="currentPortfolioItem.images">
 
               <div class="showcase-feed-section__container-padding"/>
@@ -224,7 +224,7 @@ p:not(.copyright) {
   max-width: 100%;
 }
 .showcase-feed-section__container-padding {
-  width: calc(((100vw - 500px) / 2) + (60px * 0.5));
+  width: calc(((100vw - (500px * 2/3)) / 2) + ((30px) * 0.5));
   height: 10px;
   display: block;
   flex: none;
