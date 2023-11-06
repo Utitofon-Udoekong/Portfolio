@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {gsap} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger"
 
 const divisor = 2/3
 const route = useRoute();
@@ -52,25 +51,6 @@ const updateSelected = (selectedIndex: number) => {
   });
 }
 
-let scrollTrigger: any = null;
-
-/**
- * Handle wheel events as portfolio scrolling, but push back against touchpads
- * @param event
- */
- const wheelHandler = (event: any) => {
-  const isTouchPad = event["wheelDeltaY"] ? event["wheelDeltaY"] === -3 * event.deltaY : event.deltaMode === 0;
-  if (!isTouchPad) {
-    let newSelected = selected.value;
-    if (event.deltaY > 0) {
-      newSelected += 1
-    } else {
-      newSelected -= 1
-    }
-    updateSelected(newSelected);
-  }
-}
-
 
 const paginateNext = () => {
   let newSelected = selected.value + 1;
@@ -82,67 +62,6 @@ const paginatePrev = () => {
   updateSelected(newSelected);
 }
 
-onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger)
-  setupScrollTrigger();
-});
-
-onActivated(() => {
-  setupScrollTrigger();
-});
-onUnmounted(() => {
-  if (scrollTrigger) {
-    scrollTrigger[0].kill();
-  }
-});
-
-function setupScrollTrigger() {
-  if (scrollTrigger) {
-    return;
-  }
-  nextTick(() => {
-    const offsets = [];
-    for (let i = 0; i < currentPortfolioItem.value.images.length; i++) {
-      offsets.push((i * portfolioItemWidth.value) * -1);
-    }
-    const container = document.querySelector("#portfolio-feed");
-    if (!container) {
-      setTimeout(() => {
-        setupScrollTrigger();
-      }, 100);
-      return;
-    }
-    scrollTrigger = ScrollTrigger.create({
-      trigger: "#portfolio-feed",
-      pin: true,
-      // scrub: true,
-      // horizontal: true,
-      start: "bottom bottom+=5px",
-      end: portfolioItemWidth.value * currentPortfolioItem.value.images.length,
-      // snap: offsets,
-      onToggle: (self) => console.log("toggled, isActive:", self.isActive),
-      onUpdate: (self) => {
-        let newSelected = selected.value;
-        if (self.isActive) {
-          if(self.direction > 0){
-            newSelected += 1
-          }else{
-            newSelected -= 1
-          }
-          updateSelected(newSelected);
-        } 
-        console.log(
-          "progress:",
-          self.progress.toFixed(3),
-          "direction:",
-          self.direction,
-          "velocity",
-          self.getVelocity()
-        );
-      },
-    });
-  });
-}
 
 useHead({
   title: 'Case Study: ' + currentPortfolioItem.value.title + ', ' + currentPortfolioItem.value.type + ' | ' + 'Utitofon Udoekong',
